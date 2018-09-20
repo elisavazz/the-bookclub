@@ -25,7 +25,10 @@ const bookSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	availability: Boolean,
+	availability: {
+		type: Boolean,
+		default: true
+	},
 	borrowDate: {
 		type: Date
 	},

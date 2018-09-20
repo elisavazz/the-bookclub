@@ -34,4 +34,12 @@ router.get('/all', (req, res) => {
 	});
 });
 
+router.delete('/:id', (req, res) => {
+	//the user should be able to delete only their own comments.
+	//TO DO add USER_ID check
+	Comment.findByIdAndRemove(req.params.id).then(() => {
+		res.send('bye mean review!');
+	});
+});
+
 module.exports = router;

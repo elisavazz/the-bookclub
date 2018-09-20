@@ -3,6 +3,7 @@ const router = express.Router();
 
 const authRoutes = require('./auth');
 const bookRoutes = require('./books');
+const userRoutes = require('./user');
 const commentRoutes = require('./comment');
 const { userMiddleware, checkLoggedIn } = require('../../utils/middleware');
 
@@ -19,6 +20,7 @@ router.get('/protected', checkLoggedIn, (req, res) => {
 
 router.use('/auth', authRoutes);
 router.use('/books', bookRoutes);
+router.use('/user', userRoutes);
 router.use('/comment', commentRoutes);
 
 router.use((req, res) => {

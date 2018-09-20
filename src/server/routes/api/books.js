@@ -42,11 +42,13 @@ router.post('/add', (req, res) => {
 			res.send('holla book!');
 		});
 });
-//THIS IS STILL EXACTLY THE USER MODEL: CHANGE IT!
+//should filter?
 router.get('/all', (req, res) => {
 	Book.find().then((book) => {
 		res.send(book);
 	});
 });
+
+//does the borrow function go
 
 module.exports = router;
