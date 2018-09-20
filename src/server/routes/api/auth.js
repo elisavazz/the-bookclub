@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
 const upload = require('../../utils/upload');
-const saltRounds = 10;
-var salt = bcrypt.genSaltSync(saltRounds);
+
+//var salt = bcrypt.genSaltSync(10);
 
 router.post('/sign-up', (req, res) => {
 	const { email, password, language } = req.body;
-	console.log(password);
+	console.log('!plaintext password is ' + password);
 	if (!email || !password || !language) res.status(400).send({ error: 'Missing Credentials.' });
 
 	User.findOne({ email })
@@ -20,8 +20,8 @@ router.post('/sign-up', (req, res) => {
 			return req.files && req.files.picture ? upload(req.files.picture) : Promise.resolve();
 		})
 		.then((pictureUrl) => {
-			const hashedPassword = password;
-			//bcrypt.hashSync(password, salt);
+			const hashedPassword = bcrypt.hashSync(password, 10);
+
 			return new User({
 				email,
 				password: hashedPassword,
@@ -39,7 +39,7 @@ router.post('/sign-up', (req, res) => {
 				},
 				config.SECRET_JWT_PASSPHRASE
 			);
-			res.send('fooo'); //change to { token }
+			res.send('holla'); //change to { token }
 		});
 });
 

@@ -11,6 +11,7 @@ const bookSchema = new Schema({
 		type: String,
 		required: true
 	},
+	genre: [ String ],
 	bookCover: {
 		type: String,
 		default:
@@ -25,6 +26,9 @@ const bookSchema = new Schema({
 		required: true
 	},
 	availability: Boolean,
+	borrowDate: {
+		type: Date
+	},
 	isbn: String
 });
 

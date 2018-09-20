@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
 	email: {
-		type: String
-		//required: true,
-		//unique: true
+		type: String,
+		required: true,
+		unique: true
 	},
 	password: {
-		type: String
-		//required: true
+		type: String,
+		required: true
 	},
 	profilePicture: {
 		type: String,
@@ -18,7 +18,6 @@ const userSchema = new Schema({
 	},
 	language: {
 		type: String
-		//required: true
 	},
 	zipcode: String,
 	bookshelf: {
