@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -14,16 +14,17 @@ const userSchema = new Schema({
 	profilePicture: {
 		type: String,
 		default:
-			'https://upload.wikimedia.org/wikipedia/commons/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg'
+			"https://upload.wikimedia.org/wikipedia/commons/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg"
 	},
 	language: {
 		type: String
 	},
 	zipcode: String,
 	bookshelf: {
-		type: String
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "Book"
 	},
-	wishlist: [ String ]
+	wishlist: [String]
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

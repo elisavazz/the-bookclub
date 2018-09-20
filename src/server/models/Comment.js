@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
 	title: String,
 	book: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Book'
+		ref: "Book"
 	},
 	commentAuthor: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
+		ref: "User"
 	},
 	comment: {
 		type: String,
@@ -17,8 +17,8 @@ const commentSchema = new Schema({
 	},
 	date: {
 		type: Date,
-		default: Date.now
+		default: Date.now()
 	}
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model("Comment", commentSchema);
