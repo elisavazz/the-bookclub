@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-import api from "../utils/api";
+import api from '../utils/api';
 
-import SignUp from "./SignUp";
-import Logout from "./Logout";
-import SignIn from "./SignIn";
-import NotFound from "../NotFound";
+import SignUp from './SignUp';
+import Logout from './Logout';
+import SignIn from './SignIn';
+import NotFound from '../NotFound';
 
 class Auth extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			email: "",
-			password: "",
-			language: "",
+			email: '',
+			password: '',
+			language: '',
 			picture: undefined,
-			error: ""
+			error: ''
 		};
 
 		this._handleInputChange = this._handleInputChange.bind(this);
@@ -73,10 +73,10 @@ class Auth extends Component {
 
 	_sign(type) {
 		this.setState({
-			error: ""
+			error: ''
 		});
 
-		const pictureDeclaration = type === "up" && { picture: this.state.picture };
+		const pictureDeclaration = type === 'up' && { picture: this.state.picture };
 
 		api
 			.post(
@@ -88,12 +88,12 @@ class Auth extends Component {
 				},
 				pictureDeclaration
 			)
-			.then(data => {
-				localStorage.setItem("identity", data.token);
+			.then((data) => {
+				localStorage.setItem('identity', data.token);
 				this.props.setUser();
-				this.props.history.push("/");
+				this.props.history.push('/');
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.setState({
 					error: err.description
 				});

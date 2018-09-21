@@ -12,12 +12,16 @@ const Navigation = (props) => {
 					{props.user && (
 						<span>
 							&nbsp; &nbsp; &nbsp;
+							<Link className="link nav-link" to="/add">
+								Add a book
+							</Link>
+							&nbsp; &nbsp; &nbsp;
 							<Link className="link nav-link" to="/profile">
 								Profile
 							</Link>
 							&nbsp; &nbsp; &nbsp;
 							<Link className="link nav-link" to="/books">
-								Your bookshelf
+								All bokks
 							</Link>
 						</span>
 					)}

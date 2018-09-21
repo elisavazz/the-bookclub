@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignUp extends React.Component {
 	componentDidMount() {
-		this.props.handleInputChange("email", "");
-		this.props.handleInputChange("password", "");
-		this.props.handleInputChange("language", "");
+		this.props.handleInputChange('email', '');
+		this.props.handleInputChange('password', '');
+		this.props.handleInputChange('language', '');
 	}
 
 	render() {
@@ -15,9 +15,7 @@ class SignUp extends React.Component {
 				<input
 					type="email"
 					value={this.props.email}
-					onChange={evt =>
-						this.props.handleInputChange("email", evt.target.value)
-					}
+					onChange={(evt) => this.props.handleInputChange('email', evt.target.value)}
 					className="input"
 					placeholder="E-Mail"
 				/>
@@ -26,9 +24,7 @@ class SignUp extends React.Component {
 				<input
 					type="password"
 					value={this.props.password}
-					onChange={evt =>
-						this.props.handleInputChange("password", evt.target.value)
-					}
+					onChange={(evt) => this.props.handleInputChange('password', evt.target.value)}
 					className="input"
 					placeholder="Password"
 				/>
@@ -37,9 +33,7 @@ class SignUp extends React.Component {
 				<input
 					type="language"
 					value={this.props.language}
-					onChange={evt =>
-						this.props.handleInputChange("language", evt.target.value)
-					}
+					onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
 					className="input"
 					placeholder="You speak..."
 				/>
@@ -48,15 +42,13 @@ class SignUp extends React.Component {
 				<input
 					type="file"
 					value={this.props.picture}
-					onChange={evt =>
-						this.props.handleInputChange("picture", evt.target.files[0])
-					}
+					onChange={(evt) => this.props.handleInputChange('picture', evt.target.files[0])}
 					className="input"
 					placeholder="Profile Picture"
 				/>
 				<br />
 				<br />
-				<button className="button" onClick={() => this.props.sign("up")}>
+				<button className="button" onClick={() => this.props.sign('up')}>
 					Sign Up
 				</button>
 				<br />
