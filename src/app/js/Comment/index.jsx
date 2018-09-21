@@ -7,7 +7,7 @@ import api from '../utils/api';
 import Add from './Add';
 import NotFound from '../NotFound';
 
-class Book extends Component {
+class Comment extends Component {
 	constructor(props) {
 		super(props);
 
@@ -95,4 +95,4 @@ class Book extends Component {
 	}
 }
 
-export default withRouter(Book);
+export default withRouter(Comment);

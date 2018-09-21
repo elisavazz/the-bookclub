@@ -56,6 +56,14 @@ router.get('/all', (req, res) => {
 	});
 });
 
+router.get('/language/:value', (req, res) => {
+	const { value } = req.params;
+	console.log(value);
+	Book.find({ language: value }).then((books) => {
+		res.send(books);
+	});
+});
+
 router.post('/add-to-bookshelf', (req, res) => {
 	User.findByIdAndUpdate(
 		req.user._id,

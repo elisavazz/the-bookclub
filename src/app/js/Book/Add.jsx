@@ -8,7 +8,7 @@ class Add extends React.Component {
 		this.props.handleInputChange('genre', '');
 		//BOOKCOVER HAS TO BE UPLOADED
 		this.props.handleInputChange('estimatedReadingDays', '');
-		this.props.handleInputChange('availability', false);
+		this.props.availabilityCheck('availability', '');
 		this.props.handleInputChange('isbn', '');
 	}
 	render() {
@@ -83,10 +83,9 @@ class Add extends React.Component {
 					<input
 						type="checkbox"
 						onChange={(evt) =>
-							this.props.availabilityInputChange('availability', evt.target.value)}
+							this.props.availabilityCheck('availability', evt.target.value)}
 						className="input"
-						placeholder="available?"
-						checked={true}
+						value={this.props.availability}
 					/>{' '}
 					is your book currently available?
 				</label>

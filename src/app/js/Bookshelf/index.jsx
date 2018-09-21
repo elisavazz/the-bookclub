@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import AllBooks from './AllBooks';
 import api from '../utils/api';
 
 class BookInfo extends Component {
@@ -10,7 +11,7 @@ class BookInfo extends Component {
 		this.state = {
 			books: []
 		};
-
+		this._updateSearch = this._updateSearch.bind(this);
 		this._addToBookshelf = this._addToBookshelf.bind(this);
 	}
 
@@ -22,11 +23,14 @@ class BookInfo extends Component {
 
 	render() {
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />; // this is actually the protection
-		const mappedBooks = this.state.books.map((book) => {
+		let mappedBooks = this.state.books.map((book) => {
 			return (
 				<div key={book._id} className="book">
-					<h4>{book.title}</h4>
+					<h4>
+						<Link to="#">{book.title}</Link>
+					</h4>
 					<img src={book.bookCover} width="150px" alt="" />
+					<br />
 					<button onClick={() => this._addToBookshelf(book._id)}>Add to my bookshelf</button>
 				</div>
 			);
@@ -34,18 +38,26 @@ class BookInfo extends Component {
 		return (
 			<div className="container">
 				<h1>Hello {this.props.user._id}, these are all the books !</h1>
-				{mappedBooks}
+				<div className="bookWrapper">
+					<input type="text" onChange={(evt) => this._updateSearch(evt.target.value)} />
+					{mappedBooks}
+				</div>
 			</div>
 		);
 	}
 
+	_updateSearch(value) {
+		api.get(`/api/books/language/${value}`).then((books) => {
+			this.setState({ books: books });
+		});
+	}
 	_addToBookshelf(id) {
 		api
 			.post(`/api/books/add-to-bookshelf`, {
 				id: id
 			})
 			.then((result) => {
-				console.log(result);
+				//console.log(result);
 			});
 	}
 }
