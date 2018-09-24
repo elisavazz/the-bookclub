@@ -72,6 +72,7 @@ class Add extends React.Component {
 						this.props.handleInputChange('estimatedReadingDays', evt.target.value)}
 					className="input"
 					placeholder="estimatedReadingDays"
+					min="0"
 				/>{' '}
 				<span className="asterisk">*</span>
 				<br />
