@@ -1,54 +1,84 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import AllBooks from './AllBooks';
+import BookItem from './BookItem';
 import api from '../utils/api';
+import AllBooks from './AllBooks';
 
 class BookInfo extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			books: []
+			books: [],
+			search: {
+				title: '',
+				genre: ''
+			}
 		};
-		this._updateSearch = this._updateSearch.bind(this);
+		//this._updateSearch = this._updateSearch.bind(this);
 		this._addToBookshelf = this._addToBookshelf.bind(this);
+		this._showBook = this._showBook.bind(this);
+		this._searchBooks = this._searchBooks.bind(this);
+		this._handleSearch = this._handleSearch.bind(this);
+		//this._showAvailable = this._showAvailable.bind(this);
 	}
 
 	componentDidMount() {
-		api.get('/api/books/all').then((books) => {
+		api.get('/api/books/available').then((books) => {
 			this.setState({ books: books });
 		});
 	}
-
+	//	<input type="text" onChange={(evt) => this._updateSearch(evt.target.value)} />
 	render() {
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />; // this is actually the protection
-		let mappedBooks = this.state.books.map((book) => {
-			return (
-				<div key={book._id} className="book">
-					<h4>
-						<Link to="#">{book.title}</Link>
-					</h4>
-					<img src={book.bookCover} width="150px" alt="" />
-					<br />
-					<button onClick={() => this._addToBookshelf(book._id)}>Add to my bookshelf</button>
-				</div>
-			);
-		});
+
 		return (
 			<div className="container">
-				<h1>Hello {this.props.user._id}, these are all the books !</h1>
-				<div className="bookWrapper">
-					<input type="text" onChange={(evt) => this._updateSearch(evt.target.value)} />
-					{mappedBooks}
-				</div>
+				<h1>Hello {this.props.user.username}, these are all the books !</h1>
+
+				<AllBooks
+					books={this.state.books}
+					search={this.state.search}
+					searchBooks={this._searchBooks}
+					handleSearch={this._handleSearch}
+					addToBookshelf={this._addToBookshelf}
+				/>
 			</div>
 		);
 	}
+	_showBook(id) {
+		api.get(`/api/books/${id}`).then((book) => {
+			this.setState({ book: book });
+		});
+	}
 
-	_updateSearch(value) {
-		api.get(`/api/books/language/${value}`).then((books) => {
+	// _showAvailable(value) {
+	// 	api.get(`/api/books/available`).then((books) => {
+	// 		this.setState({ books: books });
+	// 	});
+	// }
+
+	_searchBooks(event) {
+		event.preventDefault();
+		// api.get(`/api/books/available`).then((books) => {
+
+		api.get(`/api/books/all?title=${this.state.search.title}`).then((books) => {
 			this.setState({ books: books });
+		});
+	}
+	// _updateSearch(value) {
+	// 	api.get(`/api/books/language/${value}`).then((books) => {
+	// 		this.setState({ books: books });
+	// 	});
+	// }
+	_handleSearch(key, value) {
+		const newSearch = { ...this.state.search };
+
+		newSearch[key] = value;
+		console.log(newSearch);
+		this.setState({
+			search: newSearch
 		});
 	}
 	_addToBookshelf(id) {
@@ -58,6 +88,9 @@ class BookInfo extends Component {
 			})
 			.then((result) => {
 				//console.log(result);
+			})
+			.catch((error) => {
+				console.log(error);
 			});
 	}
 }

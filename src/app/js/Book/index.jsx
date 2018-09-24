@@ -84,7 +84,7 @@ class Book extends Component {
 				coverDeclaration
 			)
 			.then((data) => {
-				this.props.history.push('/');
+				this.props.history.push('/books');
 				console.log(data);
 			})
 			.catch((err) => {

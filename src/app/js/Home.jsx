@@ -13,11 +13,12 @@ const Home = (props) => {
 	// } else {
 	// 	homepage = <Bookshelf />;
 	// }
+	console.log(props.user);
 	return (
 		<div className="container">
 			<h1>
 				{props.user ? (
-					`Hello, ${props.user._id}`
+					`Hello, ${props.user.username}`
 				) : (
 					`Join the biggest library in your native language. everywhere`
 				)}
