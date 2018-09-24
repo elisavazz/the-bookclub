@@ -36,7 +36,11 @@ const bookSchema = new Schema({
 	borrowDate: {
 		type: Date
 	},
-	isbn: String
+	isbn: String,
+	date: {
+		type: Date,
+		default: Date.now()
+	}
 });
 
 module.exports = mongoose.model('Book', bookSchema);

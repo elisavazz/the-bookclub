@@ -23,9 +23,11 @@ class Profile extends Component {
 		console.log(this.props.user);
 		return (
 			<div className="container">
-				{ProfileWrap}
+				<div className="profile">
+					{ProfileWrap}
 
-				<button onClick={this._handleClick({ ProfileWrap })}>edit</button>
+					<button onClick={this._handleClick(`${ProfileWrap}`)}>edit</button>
+				</div>
 			</div>
 		);
 	}

@@ -19,27 +19,9 @@ const AllBooks = ({ books, search, searchBooks, handleSearch, addToBookshelf }) 
 	return (
 		<div className="container">
 			<Search search={search} searchBooks={searchBooks} handleSearch={handleSearch} />
-			{MappedBooks}
+
+			<div className="books-container">{MappedBooks}</div>
 		</div>
 	);
 };
 export default AllBooks;
-
-// const List = ({ pokemon, catchPokemon, search, handleSearchChange, searchPokemon }) => {
-//     const mappedPokemon = pokemon
-//         .filter((el, index) => index < 21)
-//         .map(el => <Card pokemon={el} catchPokemon={catchPokemon} key={el.id} />)
-//     return (
-//         <div className="container">
-//             <h1>Pokemon</h1>
-//             <Search
-//                 search={search}
-//                 handleSearchChange={handleSearchChange}
-//                 searchPokemon={searchPokemon}
-//             />
-//             <div className="poke-flex">{mappedPokemon}</div>
-//         </div>
-//     )
-// }
-
-// export default List

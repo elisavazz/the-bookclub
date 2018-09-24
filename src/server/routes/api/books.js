@@ -17,32 +17,31 @@ router.post('/add', checkLoggedIn, (req, res) => {
 	//UPLOAD PICTURE IS NOT WORKING PROPERLY
 	//req.files && req.files.cover ? upload(req.files.cover) : Promise.resolve();
 
+	const toLowerCaseTitle = title.toLowerCase();
+	let ownnerString = req.user._id;
 	new Book({
+		owner: ownnerString,
 		title,
 		author,
 		genre,
-		language,
+		language: toLowerCaseTitle,
 		//i need to add a reference to the owner so i can look for them when i need a book
 		//bookCover: req.files.cover,
 		estimatedReadingDays,
 		availability,
-		isbn
+		isbn,
+		date
 	})
 		.save()
 		.then((book) => {
-			console.log('book is ' + book._id + ', ' + book.title);
-			//WHY IS THIS NOT WORKING???????
-			//adds authomatically the book to the bookshelf
+			//adds authomatically the book to users the bookshelf
 
-			// req.user._id,
-			// { $push: { bookshelf: req.body.id } },
-			// { new: true }
 			User.findByIdAndUpdate(
 				req.user._id,
 				{ $push: { bookshelf: book._id } },
-				{ new: true },
-				console.log('hello')
+				{ new: true }
 			).then((book) => {
+				console.log(book);
 				res.send(book);
 			});
 		})
@@ -86,9 +85,18 @@ router.get('/all', (req, res) => {
 router.get('/language/:value', (req, res) => {
 	const { value } = req.params;
 	console.log(value);
-	Book.find({ language: value }).then((books) => {
-		res.send(books);
-	});
+	// Book.find().then((books) => {
+	// 	books.forEach((element) => {
+	// 		if (element.language.toLowercase() === value) res.send(element);
+	// 	});
+	// });
+	Book.find({ language: value })
+		.then((books) => {
+			res.send(books);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
 
 router.get('/available', (req, res) => {

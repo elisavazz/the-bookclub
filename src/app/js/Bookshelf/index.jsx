@@ -23,9 +23,13 @@ class BookInfo extends Component {
 		this._handleSearch = this._handleSearch.bind(this);
 		//this._showAvailable = this._showAvailable.bind(this);
 	}
-
 	componentDidMount() {
-		api.get('/api/books/available').then((books) => {
+		let userLanguage = this.props.user.language[0];
+		// this.props.user.language.forEach((element) => {
+		// 	userLanguage + element.toLowerCase();
+		// });
+		console.log(userLanguage);
+		api.get(`/api/books/language/${userLanguage}`).then((books) => {
 			this.setState({ books: books });
 		});
 	}

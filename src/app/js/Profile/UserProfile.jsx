@@ -3,7 +3,7 @@ import React from 'react';
 const UserProfile = ({ user }) => {
 	return (
 		<div className="profile-wrapper">
-			<img src={user.profilePicture} height="360" alt={user._id} />
+			<img className="profile-picture" src={user.profilePicture} height="360" alt={user._id} />
 			<br />
 			{user.username}
 			<br />
