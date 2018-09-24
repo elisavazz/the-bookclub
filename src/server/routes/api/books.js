@@ -9,30 +9,36 @@ const upload = require('../../utils/upload');
 const { userMiddleware, checkLoggedIn } = require('../../utils/middleware');
 
 router.post('/add', checkLoggedIn, (req, res) => {
-	const { title, author, genre, language, estimatedReadingDays, availability, isbn } = req.body;
-	console.log('CREATING NEW BOOK' + req.body);
-	console.log(req);
+	const { title, author, genre, language, estimatedReadingDays, availability, isbn, date } = req.body;
+	// console.log('CREATING NEW BOOK' + req.body);
+	// console.log(req);
 	if (!title || !author || !language || !estimatedReadingDays)
 		res.status(400).send({ error: 'Missing information' });
 	//UPLOAD PICTURE IS NOT WORKING PROPERLY
-	//req.files && req.files.cover ? upload(req.files.cover) : Promise.resolve();
 
 	const toLowerCaseTitle = title.toLowerCase();
-	let ownnerString = req.user._id;
-	new Book({
-		owner: ownnerString,
-		title,
-		author,
-		genre,
-		language: toLowerCaseTitle,
-		//i need to add a reference to the owner so i can look for them when i need a book
-		//bookCover: req.files.cover,
-		estimatedReadingDays,
-		availability,
-		isbn,
-		date
-	})
-		.save()
+
+	Book.findOne({ title })
+		.then((existingBook) => {
+			if (existingBook) return res.status(400).send({ error: 'book exists already.' });
+			console.log('req.files: ', req.files);
+			req.files && req.files.cover ? upload(req.files.cover) : Promise.resolve();
+		})
+		.then((pictureUrl) => {
+			new Book({
+				owner: req.user._id,
+				title,
+				author,
+				genre,
+				language: toLowerCaseTitle,
+				//i need to add a reference to the owner so i can look for them when i need a book
+				bookCover: pictureUrl,
+				estimatedReadingDays,
+				availability,
+				isbn,
+				date
+			}).save();
+		})
 		.then((book) => {
 			//adds authomatically the book to users the bookshelf
 
@@ -73,7 +79,8 @@ router.get('/all', (req, res) => {
 						//picture:
 						estimatedReadingDays: el.estimatedReadingDays,
 						availability: el.availability,
-						isbn: el.isbn
+						isbn: el.isbn,
+						date: el.date
 					};
 				})
 		);
@@ -102,9 +109,26 @@ router.get('/language/:value', (req, res) => {
 router.get('/available', (req, res) => {
 	const { value } = req.params;
 	console.log(value);
-	Book.find({ availability: true }).then((books) => {
-		res.send(books);
-	});
+	const regex = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
+	Book.find({ availability: true })
+		.populate('owner', 'email')
+		.then((books) => {
+			res.send(books);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
+
+router.get('/allLanguages', (req, res) => {
+	Book.find()
+		.then((books) => {
+			let languages = books.language;
+			res.send(languages);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
 
 router.get('/:id', (req, res) => {
@@ -115,16 +139,18 @@ router.get('/:id', (req, res) => {
 	});
 });
 
+// router.post('/:id/contact', (req, res) => {
+// 	const { id } = req.params;
+// 	console.log(id);
+
+// });
+
 router.post('/:id/lend', (req, res) => {
 	const { id } = req.params;
 
-	Book.findByIdAndUpdate(id, { availability: false }, { new: true })
-		.then((book) => {
-			res.send(book);
-		})
-		.then((book) => {
-			res.send(book);
-		});
+	Book.findByIdAndUpdate(id, { availability: false }, { new: true }).then((book) => {
+		res.send(book);
+	});
 });
 
 router.post('/:id/getBack', (req, res) => {

@@ -13,6 +13,7 @@ const Home = (props) => {
 	// } else {
 	// 	homepage = <Bookshelf />;
 	// }
+
 	console.log(props.user);
 	return (
 		<div className="container">
@@ -20,9 +21,15 @@ const Home = (props) => {
 				{props.user ? (
 					`Hello, ${props.user.username}`
 				) : (
-					`Join the biggest library in your native language. everywhere`
+					`Find books your native language, anywhere you are.`
 				)}
 			</h1>
+			<br />
+			<Link className="button" to="/auth/sign-up">
+				Join
+			</Link>
+			<br />
+			<br />
 			<q>the world is a book and those who don't travel only read one page</q>
 		</div>
 	);

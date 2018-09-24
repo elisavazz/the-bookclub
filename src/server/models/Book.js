@@ -18,8 +18,7 @@ const bookSchema = new Schema({
 	genre: [ String ],
 	bookCover: {
 		type: String,
-		default:
-			'https://vignette.wikia.nocookie.net/2007scape/images/7/7a/Mage%27s_book_detail.png/revision/latest?cb=20180310083825'
+		default: 'https://image.flaticon.com/icons/svg/1150/1150165.svg'
 	},
 	language: {
 		type: String,

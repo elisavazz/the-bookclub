@@ -14,7 +14,9 @@ class Add extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>Lisa, Add YOUR BOOK!</h1>
+				<h1>add a book!</h1>
+				<span className="asterisk">*</span> <p>please fill in these areas</p>
+				<br />
 				<input
 					type="title"
 					value={this.props.title}
@@ -22,6 +24,7 @@ class Add extends React.Component {
 					className="input"
 					placeholder="Title"
 				/>
+				<span className="asterisk">*</span>
 				<br />
 				<br />
 				<input
@@ -31,6 +34,7 @@ class Add extends React.Component {
 					className="input"
 					placeholder="Author"
 				/>
+				<span className="asterisk">*</span>
 				<br />
 				<br />
 				<input
@@ -49,6 +53,7 @@ class Add extends React.Component {
 					className="input"
 					placeholder="language"
 				/>
+				<span className="asterisk">*</span>
 				<br />
 				<br />
 				<input
@@ -68,6 +73,7 @@ class Add extends React.Component {
 					className="input"
 					placeholder="estimatedReadingDays"
 				/>{' '}
+				<span className="asterisk">*</span>
 				<br />
 				<br />
 				<input

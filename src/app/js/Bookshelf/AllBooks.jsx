@@ -3,7 +3,7 @@ import Search from './Search';
 import BookItem from './BookItem';
 import { Link } from 'react-router-dom';
 
-const AllBooks = ({ books, search, searchBooks, handleSearch, addToBookshelf }) => {
+const AllBooks = ({ books, search, searchBooks, handleSearch, contact, languages }) => {
 	const MappedBooks = books.map((book) => {
 		return (
 			<div key={book._id} className="book">
@@ -12,13 +12,19 @@ const AllBooks = ({ books, search, searchBooks, handleSearch, addToBookshelf }) 
 				</h4>
 				<img src={book.bookCover} width="150px" alt="" />
 				<br />
-				<button onClick={() => addToBookshelf(book._id)}>Add to my bookshelf</button>
+				<a href={`mailto:${book.owner.email}`}>Contact</a>
 			</div>
 		);
 	});
 	return (
 		<div className="container">
-			<Search search={search} searchBooks={searchBooks} handleSearch={handleSearch} />
+			<Search
+				books={books}
+				search={search}
+				searchBooks={searchBooks}
+				handleSearch={handleSearch}
+				languages={languages}
+			/>
 
 			<div className="books-container">{MappedBooks}</div>
 		</div>

@@ -28,7 +28,8 @@
 	outline: none;
 	color: $text-color;
 	padding: 5px 10px;
-	background-color: rgb(163, 255, 224);
+	background-color: white;
+	border: solid 2px $grey;
 	font-size: 16px;
 	min-width: 250px;
 	max-width: 100%;
@@ -69,9 +70,16 @@
 }
 .book {
 	margin: 16px;
+	width: 250px;
 }
 .profile-picture {
 	border-radius: 50%;
 	width: 250px;
 	height: 250px;
+}
+.asterisk {
+	font-size: 2rem;
+	font-weight: 700;
+	color: $grey;
+	margin-left: 10px;
 }
