@@ -61,11 +61,7 @@ class Navigation extends Component {
 												profile
 											</NavLink>
 										</DropdownItem>
-										<DropdownItem>
-											<NavLink tag={Link} to="/chat">
-												messages
-											</NavLink>
-										</DropdownItem>
+
 										<DropdownItem>
 											<NavLink tag={Link} to="/auth/logout">
 												log out

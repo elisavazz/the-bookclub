@@ -17,6 +17,9 @@ class Auth extends Component {
 			email: '',
 			password: '',
 			language: '',
+			address: '',
+			lat: null,
+			lng: null,
 			picture: undefined,
 			error: ''
 		};

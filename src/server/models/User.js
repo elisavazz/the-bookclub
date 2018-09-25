@@ -18,7 +18,11 @@ const userSchema = new Schema({
 			'https://upload.wikimedia.org/wikipedia/commons/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg'
 	},
 	language: [ String ],
-	zipcode: String,
+	location: {
+		type: String,
+		default: 'Point'
+	},
+	coordinates: [ Number ],
 	bookshelf: [
 		{
 			type: Schema.Types.ObjectId,

@@ -31,7 +31,8 @@ router.post('/sign-up', (req, res) => {
 				password: hashedPassword,
 				profilePicture: pictureUrl,
 				language,
-				zipcode
+				location,
+				coordinates
 			}).save();
 		})
 		.then((user) => {
