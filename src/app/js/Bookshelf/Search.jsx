@@ -14,7 +14,7 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 			/>
 
 			<input type="submit" value="Search" className="form-btn" />
-			<select name="language" id="language">
+			<select name="language" id="language" className="select-form">
 				<option value="spanish"> Spanish </option>
 				<option value="italian"> Italian </option>
 				<option value="english"> English </option>

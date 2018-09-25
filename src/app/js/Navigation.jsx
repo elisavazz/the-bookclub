@@ -32,7 +32,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar color="light" light expand="sm">
+				<Navbar color="faded" light expand="sm">
 					<NavbarBrand href="/" className="navBarBrand">
 						the Bookclub
 					</NavbarBrand>

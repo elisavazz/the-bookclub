@@ -16,7 +16,6 @@ class Add extends React.Component {
 			<div className="container">
 				<h1 className="titling">add a book!</h1>
 				<p>
-					{' '}
 					<span className="asterisk">*</span> please fill in these areas
 				</p>
 				<input

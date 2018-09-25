@@ -62,7 +62,14 @@
 		color: $primary-color;
 	}
 }
-
+.select-form {
+	border-radius: 3px;
+	border: none;
+	background-color: white;
+	border: solid 2px $grey;
+	color: $text-color;
+	padding: 5px 10px;
+}
 .separator {
 	display: block;
 	width: 100%;

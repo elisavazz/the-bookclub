@@ -21,10 +21,11 @@ router.post('/add', checkLoggedIn, (req, res) => {
 	Book.findOne({ title })
 		.then((existingBook) => {
 			if (existingBook) return res.status(400).send({ error: 'book exists already.' });
-			console.log('req.files: ', req.files);
-			req.files && req.files.cover ? upload(req.files.cover) : Promise.resolve();
+			console.log(req.files);
+			return req.files && req.files.bookCover ? upload(req.files.bookCover) : Promise.resolve();
 		})
 		.then((pictureUrl) => {
+			console.log('picture Url ', pictureUrl);
 			new Book({
 				owner: req.user._id,
 				title,
@@ -41,7 +42,6 @@ router.post('/add', checkLoggedIn, (req, res) => {
 		})
 		.then((book) => {
 			//adds authomatically the book to users the bookshelf
-
 			User.findByIdAndUpdate(
 				req.user._id,
 				{ $push: { bookshelf: book._id } },

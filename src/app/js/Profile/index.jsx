@@ -11,7 +11,7 @@ class Profile extends Component {
 
 		this.state = {
 			books: [],
-			view: 'profile'
+			view: ''
 		};
 
 		this._onClickButton1 = this._onClickButton1.bind(this);
@@ -20,9 +20,7 @@ class Profile extends Component {
 	componentDidMount() {
 		this.setState({ view: 'profile' });
 	}
-	_onClickButton1 = () => {
-		this.setState({ view: 'edit' });
-	};
+
 	///handleclick wants to toggle the edit feature of the page
 
 	render() {
@@ -48,6 +46,10 @@ class Profile extends Component {
 		console.log(this.props.user);
 		return <div className="container">{ProfileWrap}</div>;
 	}
+	_onClickButton1 = () => {
+		console.log('click!');
+		this.setState({ view: 'edit' });
+	};
 }
 
 export default Profile;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
-
+import { Redirect } from 'react-router-dom';
 import api from '../utils/api';
 
 import Add from './Add';
@@ -42,8 +42,10 @@ class Book extends Component {
 							author={this.state.author}
 							genre={this.state.genre}
 							language={this.state.language}
+							bookCover={this.state.bookCover}
 							estimatedReadingDays={this.state.estimatedReadingDays}
 							availability={this.state.availability}
+							isbn={this.state.isbn}
 							error={this.state.error}
 						/>
 					)}
@@ -84,7 +86,8 @@ class Book extends Component {
 				coverDeclaration
 			)
 			.then((data) => {
-				this.props.history.push('/books');
+				//this.props.history.push('/books');
+				return <Redirect to="/books" />;
 				console.log(data);
 			})
 			.catch((err) => {
