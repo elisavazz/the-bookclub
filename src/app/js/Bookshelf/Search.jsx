@@ -10,9 +10,10 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 			<input
 				value={search.title}
 				onChange={(event) => handleSearch('title', event.target.value)}
+				className="input"
 			/>
 
-			<input type="submit" value="Search" />
+			<input type="submit" value="Search" className="form-btn" />
 			<select name="language" id="language">
 				<option value="spanish"> Spanish </option>
 				<option value="italian"> Italian </option>

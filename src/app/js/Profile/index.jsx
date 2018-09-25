@@ -10,35 +10,43 @@ class Profile extends Component {
 		super(props);
 
 		this.state = {
-			books: []
+			books: [],
+			view: 'profile'
 		};
-		this._handleClick = this._handleClick.bind(this);
+
+		this._onClickButton1 = this._onClickButton1.bind(this);
 	}
+
+	componentDidMount() {
+		this.setState({ view: 'profile' });
+	}
+	_onClickButton1 = () => {
+		this.setState({ view: 'edit' });
+	};
 	///handleclick wants to toggle the edit feature of the page
 
 	render() {
 		let ProfileWrap = <UserProfile user={this.props.user} />;
+		if (this.state.view === 'profile')
+			return (
+				<UserProfile
+					user={this.props.user}
+					view={this.state.view}
+					onclickbutton={this.state._onClickButton1}
+				/>
+			);
+		if (this.state.view === 'edit')
+			return (
+				<EditProfile
+					user={this.props.user}
+					view={this.state.view}
+					onclickbutton={this.state._onClickButton1}
+				/>
+			);
 
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />; // this is actually the protection
 		console.log(this.props.user);
-		return (
-			<div className="container">
-				<div className="profile">
-					{ProfileWrap}
-
-					<button onClick={this._handleClick(`${ProfileWrap}`)}>edit</button>
-				</div>
-			</div>
-		);
-	}
-	_handleClick() {
-		console.log('ping');
-		// if (ProfileWrap) {
-		// 	ProfileWrap = <EditProfile user={this.props.user} />;
-		// } else {
-		// 	ProfileWrap = <UserProfile user={this.props.user} />;
-		// }
-		// return ProfileWrap;
+		return <div className="container">{ProfileWrap}</div>;
 	}
 }
 

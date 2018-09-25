@@ -11,7 +11,8 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>SignUp</h1>
+				<h1 className="titling">Sign up</h1>
+				<br />
 				<input
 					type="email"
 					value={this.props.email}
@@ -43,7 +44,6 @@ class SignUp extends React.Component {
 					type="file"
 					value={this.props.picture}
 					onChange={(evt) => this.props.handleInputChange('picture', evt.target.files[0])}
-					className="input"
 					placeholder="Profile Picture"
 				/>
 				<br />

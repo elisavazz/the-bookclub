@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 const AllBooks = ({ books, search, searchBooks, handleSearch, contact, languages }) => {
 	const MappedBooks = books.map((book) => {
 		return (
-			<div key={book._id} className="book">
-				<h4>
-					<Link to="/">{book.title}</Link>
-				</h4>
-				<img src={book.bookCover} width="150px" alt="" />
+			<div key={book._id} className="book-card">
+				<h3 className="book-title">
+					<Link to="/" className="link-to-det">
+						{book.title}
+					</Link>
+				</h3>
+				<img src={book.bookCover} width="150px" alt="" className="book-cover" />
 				<br />
 				<a href={`mailto:${book.owner.email}`}>Contact</a>
 			</div>
@@ -26,7 +28,7 @@ const AllBooks = ({ books, search, searchBooks, handleSearch, contact, languages
 				languages={languages}
 			/>
 
-			<div className="books-container">{MappedBooks}</div>
+			<div className="books-wrap">{MappedBooks}</div>
 		</div>
 	);
 };

@@ -17,10 +17,11 @@ import {
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
-		this.toggleNavbar = this.toggleNavbar.bind(this);
+
 		this.state = {
-			isOpen: false
+			collapsed: true
 		};
+		this.toggleNavbar = this.toggleNavbar.bind(this);
 	}
 	toggleNavbar() {
 		this.setState({
@@ -30,56 +31,67 @@ class Navigation extends Component {
 	//const Navigation = (props) => {
 	render() {
 		return (
-			<Navbar className="navigation">
-				<div className="container nav-content">
-					<div>
-						<NavbarBrand href="/">The Bookclub</NavbarBrand>
-						<NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-						{this.props.user && (
-							<Collapse isOpen={!this.state.collapsed} navbar>
-								<Nav navbar>
-									<NavItem>
-										<Link className="link nav-link" to="/add">
-											Add a book
-										</Link>
-									</NavItem>
-									<NavItem>
-										<Link className="link nav-link" to="/profile">
-											Profile
-										</Link>
-									</NavItem>
-									<NavItem>
-										<Link className="link nav-link" to="/books">
-											see all books
-										</Link>
-									</NavItem>
-									<NavItem>
-										<Link className="link nav-link" to="/chat">
-											Messages
-										</Link>
-									</NavItem>
-								</Nav>
-							</Collapse>
-						)}
+			<div>
+				<Navbar color="light" light expand="sm">
+					<NavbarBrand href="/" className="navBarBrand">
+						the Bookclub
+					</NavbarBrand>
 
-						{this.props.user ? (
-							<Link className="link nav-link" to="/auth/logout">
-								Logout
-							</Link>
-						) : (
-							<span>
-								<Link className="link nav-link" to="/auth/sign-in">
-									Sign in
-								</Link>
-								&nbsp; &nbsp; &nbsp;
-								<Link className="link nav-link" to="/auth/sign-up">
-									Sign up
-								</Link>
-							</span>
-						)}
-					</div>
-				</div>
-			</Navbar>
+					<NavbarToggler onClick={this.toggle} />
+					{this.props.user && (
+						<Collapse isOpen={this.state.isOpen} navbar>
+							<Nav className="ml-auto" navbar>
+								<NavItem>
+									<Link to="/books">
+										<NavLink>bookshelf</NavLink>
+									</Link>
+								</NavItem>
+								<NavItem>
+									<NavLink href="/add">add a book</NavLink>
+								</NavItem>
+								<UncontrolledDropdown nav inNavbar>
+									<DropdownToggle nav caret>
+										more
+									</DropdownToggle>
+									<DropdownMenu right>
+										<DropdownItem>
+											<Link to="/profile">
+												<NavLink>profile</NavLink>
+											</Link>
+										</DropdownItem>
+										<DropdownItem>
+											<Link to="/chat">
+												<NavLink>messages</NavLink>
+											</Link>
+										</DropdownItem>
+										<DropdownItem>
+											<Link to="/auth/logout">
+												<NavLink>log out</NavLink>
+											</Link>
+										</DropdownItem>
+									</DropdownMenu>
+								</UncontrolledDropdown>
+							</Nav>
+						</Collapse>
+					)}
+					{!this.props.user && (
+						<Collapse isOpen={this.state.isOpen} navbar>
+							<Nav className="ml-auto" navbar>
+								<NavItem>
+									<Link to="/auth/sign-up">
+										<NavLink>Join</NavLink>
+									</Link>
+								</NavItem>
+								<NavItem>
+									<Link to="/auth/sign-in">
+										<NavLink>Sign in</NavLink>
+									</Link>
+								</NavItem>
+							</Nav>
+						</Collapse>
+					)}
+				</Navbar>
+			</div>
 		);
 	}
 }

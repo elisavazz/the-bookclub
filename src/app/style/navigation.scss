@@ -6,14 +6,17 @@
 	display: flex;
 	justify-content: space-between;
 }
+.navBarBrand {
+	font-family: 'Noto Serif JP', serif;
+}
 .nav-link {
-	color: #fff;
+	color: #e2dbcf;
 
 	&:visited {
-		color: #fff;
+		color: #e2dbcf;
 	}
 
 	&:hover {
-		color: #fff;
+		color: #ffffff;
 	}
 }

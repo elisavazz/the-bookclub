@@ -26,7 +26,7 @@ class BookInfo extends Component {
 		//this._showAvailable = this._showAvailable.bind(this);
 	}
 	componentDidMount() {
-		let userLanguage = this.props.user.language[0];
+		//	let userLanguage = this.props.user.language[0];
 
 		// api.get(`/api/books/language/${userLanguage}`).then((books) => {
 		// 	this.setState({ books: books });

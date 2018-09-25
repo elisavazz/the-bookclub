@@ -10,7 +10,8 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>SignIn</h1>
+				<h1 className="titling">Sign in</h1>
+				<br />
 				<input
 					type="email"
 					value={this.props.email}

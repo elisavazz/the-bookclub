@@ -14,9 +14,11 @@ class Add extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>add a book!</h1>
-				<span className="asterisk">*</span> <p>please fill in these areas</p>
-				<br />
+				<h1 className="titling">add a book!</h1>
+				<p>
+					{' '}
+					<span className="asterisk">*</span> please fill in these areas
+				</p>
 				<input
 					type="title"
 					value={this.props.title}
@@ -60,7 +62,6 @@ class Add extends React.Component {
 					type="file"
 					value={this.props.cover}
 					onChange={(evt) => this.props.handleInputChange('cover', evt.target.files[0])}
-					className="input"
 					placeholder="Book cover"
 				/>
 				<br />
@@ -91,7 +92,6 @@ class Add extends React.Component {
 						type="checkbox"
 						onChange={(evt) =>
 							this.props.availabilityCheck('availability', evt.target.value)}
-						className="input"
 						value={this.props.availability}
 					/>{' '}
 					is your book currently available?

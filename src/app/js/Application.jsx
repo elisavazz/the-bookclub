@@ -12,6 +12,7 @@ import api from './utils/api';
 import Bookshelf from './Bookshelf';
 import Book from './Book';
 import Chat from './Chat';
+import LandingPage from './LandingPage';
 
 class Application extends React.Component {
 	constructor(props) {
@@ -40,6 +41,7 @@ class Application extends React.Component {
 						<Route exact path="/profile" render={() => <Profile user={this.state.user} />} />
 						<Route path="/books" render={() => <Bookshelf user={this.state.user} />} />
 						<Route path="/chat" render={() => <Chat user={this.state.user} />} />
+						<Route path="/landing" render={() => <LandingPage />} />
 						<Route
 							path="/auth"
 							render={() => <Auth setUser={this._setUser} resetUser={this._resetUser} />}

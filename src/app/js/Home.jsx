@@ -1,38 +1,25 @@
 import React from 'react';
 import Bookshelf from './Bookshelf';
+import LandingPage from './Bookshelf';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Home = (props) => {
-	// let homepage;
-	// if (props.user) {
-	// 	homepage = (
-	// 		<Link className="link nav-link" to="/auth/sign-in">
-	// 			Join!
-	// 		</Link>
-	// 	);
-	// } else {
-	// 	homepage = <Bookshelf />;
-	// }
-
 	console.log(props.user);
-	return (
-		<div className="container">
-			<h1>
-				{props.user ? (
-					`Hello, ${props.user.username}`
-				) : (
-					`Find books your native language, anywhere you are.`
-				)}
-			</h1>
-			<br />
-			<Link className="button" to="/auth/sign-up">
-				Join
-			</Link>
-			<br />
-			<br />
-			<q>the world is a book and those who don't travel only read one page</q>
-		</div>
-	);
+	if (!props.user) return <Redirect to="/landing" />;
+	return <Redirect to="/books" />;
+
+	// return (
+	// 	<div className="container">
+	// 		{props.user && <h1>Hello, {props.user.username}</h1>}
+
+	// 		<br />
+
+	// 		<q>the world is a book and those who don't travel only read one page</q>
+	// 		{!props.user && <LandingPage />}
+	// 	</div>
+	// );
 };
 
+//`Find books your native language, anywhere you are.`
 export default Home;
