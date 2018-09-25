@@ -20,7 +20,21 @@
 		}
 	}
 }
-
+.email-btn {
+	display: inline-block;
+	padding: 6px 8px;
+	border: 2px solid lighten($primary-color, 8%);
+	border-radius: 3px;
+	font-weight: 700;
+	color: $primary-color;
+	&:hover {
+		cursor: pointer;
+		border: 2px solid darken($primary-color, 8%);
+	}
+}
+.form-exp {
+	font-size: 0.92rem;
+}
 .form-btn {
 	padding: 6px 8px;
 	background-color: $primary-color;
@@ -93,7 +107,14 @@
 		color: lighten($primary-color, 8%);
 	}
 }
-
+.book-container {
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
 .books-wrap {
 	display: -webkit-flex;
 	display: flex;
@@ -142,4 +163,7 @@
 	font-weight: 700;
 	color: $primary-color, 8%;
 	margin-left: 10px;
+}
+.fill-info {
+	color: lighten($text-color, 20%);
 }

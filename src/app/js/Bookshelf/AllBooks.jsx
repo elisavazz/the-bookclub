@@ -14,12 +14,14 @@ const AllBooks = ({ books, search, searchBooks, handleSearch, contact, languages
 				</h3>
 				<img src={book.bookCover} width="150px" alt="" className="book-cover" />
 				<br />
-				<a href={`mailto:${book.owner.email}`}>Contact</a>
+				<a className="email-btn" href={`mailto:${book.owner.email}`}>
+					Contact
+				</a>
 			</div>
 		);
 	});
 	return (
-		<div className="container">
+		<div className="container book-container">
 			<Search
 				books={books}
 				search={search}

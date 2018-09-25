@@ -31,14 +31,29 @@ class SignUp extends React.Component {
 				/>
 				<br />
 				<br />
+				<label className="fill-info">which language do you read?</label>
+				<br />
 				<input
 					type="language"
 					value={this.props.language}
 					onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
 					className="input"
-					placeholder="You speak..."
+					placeholder="English..."
 				/>
 				<br />
+				<br />
+				<label className="fill-info">where are you?</label>
+				<br />
+				<input
+					type="zipcode"
+					value={this.props.zipcode}
+					onChange={(evt) => this.props.handleInputChange('zipcode', evt.target.value)}
+					className="input"
+					placeholder="Your Zipcode"
+				/>
+				<br />
+				<br />
+				<label className="fill-info">add a picture!</label>
 				<br />
 				<input
 					type="file"
@@ -48,7 +63,7 @@ class SignUp extends React.Component {
 				/>
 				<br />
 				<br />
-				<button className="button" onClick={() => this.props.sign('up')}>
+				<button className="form-btn" onClick={() => this.props.sign('up')}>
 					Sign Up
 				</button>
 				<br />

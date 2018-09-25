@@ -43,7 +43,7 @@ class BookInfo extends Component {
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />; // this is actually the protection
 
 		return (
-			<div className="container">
+			<div className="container  book-container">
 				<h1>Hello {this.props.user.username}, these are all the books !</h1>
 
 				<AllBooks

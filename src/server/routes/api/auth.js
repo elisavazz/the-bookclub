@@ -9,7 +9,7 @@ const upload = require('../../utils/upload');
 //var salt = bcrypt.genSaltSync(10);
 
 router.post('/sign-up', (req, res) => {
-	const { email, password, language } = req.body;
+	const { email, password, language, zipcode } = req.body;
 
 	if (!email || !password || !language) res.status(400).send({ error: 'Missing Credentials.' });
 
@@ -30,7 +30,8 @@ router.post('/sign-up', (req, res) => {
 				email,
 				password: hashedPassword,
 				profilePicture: pictureUrl,
-				language
+				language,
+				zipcode
 			}).save();
 		})
 		.then((user) => {
@@ -41,7 +42,8 @@ router.post('/sign-up', (req, res) => {
 					username: user.username,
 					profilePicture: user.profilePicture,
 					language: user.language,
-					bookshelf: user.bookshelf
+					bookshelf: user.bookshelf,
+					zipcode: user.zipcode
 				},
 				config.SECRET_JWT_PASSPHRASE
 			);
@@ -68,7 +70,8 @@ router.post('/sign-in', (req, res) => {
 				username: existingUser.username,
 				profilePicture: existingUser.profilePicture,
 				language: existingUser.language,
-				bookshelf: existingUser.bookshelf
+				bookshelf: existingUser.bookshelf,
+				zipcode: existingUser.zipcode
 			},
 			config.SECRET_JWT_PASSPHRASE
 		);

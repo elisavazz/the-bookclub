@@ -42,12 +42,14 @@ class Navigation extends Component {
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
 								<NavItem>
-									<Link to="/books">
-										<NavLink>bookshelf</NavLink>
-									</Link>
+									<NavLink tag={Link} to="/books">
+										bookshelf
+									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink href="/add">add a book</NavLink>
+									<NavLink tag={Link} to="/add">
+										add a book
+									</NavLink>
 								</NavItem>
 								<UncontrolledDropdown nav inNavbar>
 									<DropdownToggle nav caret>
@@ -55,19 +57,19 @@ class Navigation extends Component {
 									</DropdownToggle>
 									<DropdownMenu right>
 										<DropdownItem>
-											<Link to="/profile">
-												<NavLink>profile</NavLink>
-											</Link>
+											<NavLink tag={Link} to="/profile">
+												profile
+											</NavLink>
 										</DropdownItem>
 										<DropdownItem>
-											<Link to="/chat">
-												<NavLink>messages</NavLink>
-											</Link>
+											<NavLink tag={Link} to="/chat">
+												messages
+											</NavLink>
 										</DropdownItem>
 										<DropdownItem>
-											<Link to="/auth/logout">
-												<NavLink>log out</NavLink>
-											</Link>
+											<NavLink tag={Link} to="/auth/logout">
+												log out
+											</NavLink>
 										</DropdownItem>
 									</DropdownMenu>
 								</UncontrolledDropdown>
@@ -78,14 +80,14 @@ class Navigation extends Component {
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>
 								<NavItem>
-									<Link to="/auth/sign-up">
-										<NavLink>Join</NavLink>
-									</Link>
+									<NavLink tag={Link} to="/auth/sign-up">
+										Join
+									</NavLink>
 								</NavItem>
 								<NavItem>
-									<Link to="/auth/sign-in">
-										<NavLink>Sign in</NavLink>
-									</Link>
+									<NavLink tag={Link} to="/auth/sign-in">
+										Sign in
+									</NavLink>
 								</NavItem>
 							</Nav>
 						</Collapse>
