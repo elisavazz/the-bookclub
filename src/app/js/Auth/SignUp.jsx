@@ -76,13 +76,6 @@ class SignUp extends React.Component {
 				<br />
 				<label className="fill-info">where are you?</label>
 				<br />
-				<input
-					type="zipcode"
-					value={this.props.zipcode}
-					onChange={(evt) => this.props.handleInputChange('zipcode', evt.target.value)}
-					className="input"
-					placeholder="Your Zipcode"
-				/>
 				<PlacesAutocomplete
 					value={this.state.address}
 					onChange={this.handleChange}

@@ -80,4 +80,30 @@ router.post('/sign-in', (req, res) => {
 	});
 });
 
+router.post('/edit', (req, res) => {
+	console.log(req.body);
+	const { username, language } = req.body;
+	let languageList = language.toLowerCase().replace(/ /g, '').split(',');
+
+	User.findByIdAndUpdate(req.user._id, {
+		username: username,
+		language: languageList,
+		location: location
+	}).then((user) => {
+		const token = jwt.sign(
+			{
+				_id: user._id,
+				email: user.email,
+				username: user.username,
+				profilePicture: user.profilePicture,
+				language: user.language,
+				bookshelf: user.bookshelf,
+				zipcode: user.zipcode
+			},
+			config.SECRET_JWT_PASSPHRASE
+		);
+		res.send({ token });
+	});
+});
+
 module.exports = router;

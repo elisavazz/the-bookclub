@@ -39,6 +39,7 @@ class Application extends React.Component {
 						<Route exact path="/" render={() => <Home user={this.state.user} />} />
 						<Route exact path="/add" render={() => <Book user={this.state.user} />} />
 						<Route exact path="/profile" render={() => <Profile user={this.state.user} />} />
+
 						<Route path="/books" render={() => <Bookshelf user={this.state.user} />} />
 						<Route path="/chat" render={() => <Chat user={this.state.user} />} />
 						<Route path="/landing" render={() => <LandingPage />} />

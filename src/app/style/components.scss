@@ -93,7 +93,12 @@
 	border: none;
 	outline: none;
 }
-
+.landing-container {
+	margin-top: 10vw;
+	h1 {
+		margin-bottom: 3vw;
+	}
+}
 .link {
 	color: $primary-color;
 	text-decoration: none;
