@@ -13,7 +13,7 @@ class EditProfile extends React.Component {
 			<div className="profile-wrapper">
 				<h1>edit your profile!</h1>
 
-				<label className="fill-info">add or update your username: </label>
+				<label className="fill-info">update your username: </label>
 				<br />
 				<input
 					type="username"
@@ -24,6 +24,8 @@ class EditProfile extends React.Component {
 				/>
 				<br />
 				<br />
+				<label className="fill-info">update languages:</label>
+				<br />
 				<input
 					type="language"
 					value={this.props.language}
@@ -32,6 +34,8 @@ class EditProfile extends React.Component {
 					placeholder={this.props.language}
 				/>
 				<br />
+				<br />
+				<label className="fill-info">update your location:</label>
 				<br />
 				<input
 					type="location"

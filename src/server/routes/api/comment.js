@@ -3,7 +3,7 @@ const router = express.Router();
 const Comment = require('../../models/Comment');
 
 router.post('/write', (req, res) => {
-	const { title, book, commentAuthor, comment, date } = req.body;
+	const { title, book, comment, date } = req.body;
 	console.log(title + ', the day today is' + date);
 	if (!comment) res.status(400).send({ error: 'Missing content!' });
 
@@ -17,18 +17,24 @@ router.post('/write', (req, res) => {
 	return new Comment({
 		title,
 		book,
-		commentAuthor,
+		commentAuthor: req.user._id,
 		comment,
 		date
 	})
 		.save()
-		.then((book) => {
+		.then((comment) => {
 			res.send(comment);
 		});
 	// })
 });
 //THIS IS STILL EXACTLY THE USER MODEL: CHANGE IT!
 router.get('/all', (req, res) => {
+	Comment.find().then((comment) => {
+		res.send(comment);
+	});
+});
+
+router.get('/find', (req, res) => {
 	Comment.find().then((comment) => {
 		res.send(comment);
 	});

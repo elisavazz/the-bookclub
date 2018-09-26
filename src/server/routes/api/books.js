@@ -8,13 +8,10 @@ const upload = require('../../utils/upload');
 
 const { userMiddleware, checkLoggedIn } = require('../../utils/middleware');
 
-router.post('/add', checkLoggedIn, (req, res) => {
+router.post('/add', (req, res) => {
 	const { title, author, genre, language, estimatedReadingDays, availability, isbn, date } = req.body;
-	// console.log('CREATING NEW BOOK' + req.body);
-	// console.log(req);
 	if (!title || !author || !language || !estimatedReadingDays)
 		res.status(400).send({ error: 'Missing information' });
-	//UPLOAD PICTURE IS NOT WORKING PROPERLY
 
 	const toLowerCaseTitle = title.toLowerCase();
 	const toLowercaseLanguage = language.toLowerCase();
@@ -40,18 +37,27 @@ router.post('/add', checkLoggedIn, (req, res) => {
 			})
 				.save()
 				.then((book) => {
-					console.log(
-						'this user added the book' + book.owner + 'and this is the id' + book._id
-					);
+					// console.log(
+					// 	'this user added the book' + book.owner + 'and this is the id' + book._id
+					// );
 					//adds authomatically the book to users the bookshelf
 					User.findByIdAndUpdate(
 						book.owner,
-						{ $push: { bookshelf: book._id } },
+						{
+							$push: { bookshelf: book._id }
+						},
 						{ new: true }
-					).then((book) => {
-						//console.log(book);
-						res.send(book);
-					});
+					)
+						.then((user) => {
+							console.log('MY USER BOOKSHELF' + user);
+						})
+						.catch((err) => {
+							console.log(err);
+						});
+				})
+				.then((book) => {
+					console.log('MY book' + book);
+					res.send(book);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -195,7 +201,7 @@ router.post('/add-to-bookshelf', (req, res) => {
 });
 
 router.get('/user-bookshelf', (req, res) => {
-	console.log('HELLO User ' + req);
+	console.log('HELLO User ' + req.user._id);
 });
 
 // Book.find({ owner: req.user._id })

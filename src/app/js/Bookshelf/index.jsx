@@ -33,9 +33,7 @@ class BookInfo extends Component {
 		// api.get(`/api/books/language/${userLanguage}`).then((books) => {
 		// 	this.setState({ books: books });
 		// });
-		api.get(`/api/books/allLanguages`).then((languages) => {
-			this.setState({ languages: languages });
-		});
+
 		api.get(`/api/books/available`).then((books) => {
 			this.setState({ books: books });
 		});

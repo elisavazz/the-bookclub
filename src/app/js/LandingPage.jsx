@@ -10,7 +10,7 @@ const LandingPage = (props) => {
 			<section>
 				<div className="container landing-container">
 					<h1 className="titling">
-						Find books your native language,<br /> anywhere you are.
+						Find books in the language you want,<br /> anywhere you are.
 					</h1>
 					<p>like a library, but you just need an email address</p>
 					<br />
@@ -29,9 +29,19 @@ const LandingPage = (props) => {
 						height="190"
 					/>
 					<div className="content-right">
-						<h2>get in touch with your local community of readers</h2>
+						<h2 className="detail-title">
+							<span className="underlined-text">Share</span> your books
+							<br />
+							and <span className="underlined-text">open up</span> to the community
+						</h2>
 						<br />
-						<p className="subtitle">Find what to want to read, contact, borrow</p>
+						<p className="subtitle">
+							update your location<br />
+							find something to read
+							<br />
+							contact!
+						</p>
+						<br />
 					</div>
 				</div>
 			</section>

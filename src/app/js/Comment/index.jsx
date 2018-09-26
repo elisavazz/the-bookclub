@@ -1,68 +1,31 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { withRouter } from 'react-router';
-
+import Comments from './Comments';
 import api from '../utils/api';
-
-import Add from './Add';
-import NotFound from '../NotFound';
 
 class Comment extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			title: '',
-			author: '',
-			genre: '',
-			language: '',
-			bookCover: undefined,
-			estimatedReadingDays: 0,
-			availability: false,
-			isbn: ''
+			comments: []
 		};
 
-		this._handleInputChange = this._handleInputChange.bind(this);
-		this._availabilityCheck = this._availabilityCheck.bind(this);
-		this._add = this._add.bind(this);
+		//	this._add = this._add.bind(this);
 	}
-
+	componentDidMount() {
+		api.get(`/api/comment/all`).then((comments) => {
+			console.log('comments!' + comments);
+			this.setState({ comments });
+		});
+	}
+	//
 	render() {
+		console.log(this.state);
 		return (
-			<Switch>
-				<Route
-					exact
-					path="/add"
-					render={() => (
-						<Add
-							handleInputChange={this._handleInputChange}
-							availabilityCheck={this._availabilityCheck}
-							add={this._add}
-							title={this.state.title}
-							author={this.state.author}
-							genre={this.state.genre}
-							language={this.state.language}
-							estimatedReadingDays={this.state.estimatedReadingDays}
-							availability={this.state.availability}
-							error={this.state.error}
-						/>
-					)}
-				/>
-				<Route component={NotFound} />
-			</Switch>
+			<div>
+				<Comments comments={this.state.comments} />
+			</div>
 		);
-	}
-
-	_handleInputChange(key, newValue) {
-		this.setState({
-			[key]: newValue
-		});
-	}
-
-	_availabilityCheck(key) {
-		this.setState({
-			[key]: !this.state.availability
-		});
 	}
 
 	_add() {
@@ -95,4 +58,4 @@ class Comment extends Component {
 	}
 }
 
-export default withRouter(Comment);
+export default Comment;

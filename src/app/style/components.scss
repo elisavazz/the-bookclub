@@ -68,8 +68,8 @@
 	outline: none;
 	color: $text-color;
 	padding: 5px 10px;
-	background-color: white;
-	border: solid 2px $grey;
+	background-color: #f9f6f2;
+	border: solid 1.4px $grey;
 	font-size: 16px;
 	min-width: 250px;
 	max-width: 100%;
@@ -79,11 +79,18 @@
 		color: $primary-color;
 	}
 }
+.search {
+	& .select-form,
+	input {
+		margin: auto 4px;
+	}
+	margin-bottom: 16px;
+}
 .select-form {
 	border-radius: 3px;
 	border: none;
-	background-color: white;
-	border: solid 2px $grey;
+	background-color: #f9f6f2;
+	border: solid 1px $grey;
 	color: $text-color;
 	padding: 5px 10px;
 }
@@ -147,10 +154,11 @@
 .book-card {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-
+	align-items: center;
+	box-sizing: border-box;
+	border-radius: 3px;
 	background-color: #f9f6f2;
-
+	box-shadow: 0 2px 6px #d0c8c9;
 	margin: 12px;
 	padding: 1.5%;
 	width: 30%;
@@ -159,6 +167,9 @@
 	@media (max-width: 700px) {
 		width: 100%;
 	}
+}
+.book-owned {
+	opacity: 0.7;
 }
 .book-title {
 	font-family: 'Noto Serif JP', serif;
