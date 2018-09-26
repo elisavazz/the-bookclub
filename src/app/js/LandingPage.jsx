@@ -32,7 +32,7 @@ const LandingPage = (props) => {
 						<h2 className="detail-title">
 							<span className="underlined-text">Share</span> your books
 							<br />
-							and <span className="underlined-text">open up</span> to the community
+							and open up to the <span className="underlined-text">community</span>.
 						</h2>
 						<br />
 						<p className="subtitle">

@@ -13,7 +13,7 @@ router.post('/add', (req, res) => {
 	if (!title || !author || !language || !estimatedReadingDays)
 		res.status(400).send({ error: 'Missing information' });
 
-	const toLowerCaseTitle = title.toLowerCase();
+	//const toLowerCaseTitle = title.toLowerCase();
 	const toLowercaseLanguage = language.toLowerCase();
 	Book.findOne({ title })
 		.then((existingBook) => {
@@ -41,23 +41,17 @@ router.post('/add', (req, res) => {
 					// 	'this user added the book' + book.owner + 'and this is the id' + book._id
 					// );
 					//adds authomatically the book to users the bookshelf
-					User.findByIdAndUpdate(
+					return User.findByIdAndUpdate(
 						book.owner,
 						{
 							$push: { bookshelf: book._id }
 						},
 						{ new: true }
-					)
-						.then((user) => {
-							console.log('MY USER BOOKSHELF' + user);
-						})
-						.catch((err) => {
-							console.log(err);
-						});
+					);
 				})
-				.then((book) => {
-					console.log('MY book' + book);
-					res.send(book);
+				.then((user) => {
+					console.log(user);
+					res.send(user);
 				})
 				.catch((err) => {
 					console.log(err);
