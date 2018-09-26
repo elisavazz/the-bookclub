@@ -31,8 +31,7 @@ router.post('/sign-up', (req, res) => {
 				password: hashedPassword,
 				profilePicture: pictureUrl,
 				language,
-				location,
-				coordinates
+				location
 			}).save();
 		})
 		.then((user) => {
@@ -43,8 +42,9 @@ router.post('/sign-up', (req, res) => {
 					username: user.username,
 					profilePicture: user.profilePicture,
 					language: user.language,
+					location: user.location,
 					bookshelf: user.bookshelf,
-					zipcode: user.zipcode
+					wishlist: user.wishlist
 				},
 				config.SECRET_JWT_PASSPHRASE
 			);
@@ -71,8 +71,9 @@ router.post('/sign-in', (req, res) => {
 				username: existingUser.username,
 				profilePicture: existingUser.profilePicture,
 				language: existingUser.language,
+				location: existingUser.location,
 				bookshelf: existingUser.bookshelf,
-				zipcode: existingUser.zipcode
+				wishlist: existingUser.wishlist
 			},
 			config.SECRET_JWT_PASSPHRASE
 		);
@@ -102,7 +103,8 @@ router.post('/edit', (req, res) => {
 				profilePicture: user.profilePicture,
 				language: user.language,
 				location: user.location,
-				bookshelf: user.bookshelf
+				bookshelf: user.bookshelf,
+				wishlist: user.wishlist
 			},
 			config.SECRET_JWT_PASSPHRASE
 		);

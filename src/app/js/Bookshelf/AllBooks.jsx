@@ -36,7 +36,7 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 				</div>
 			);
 		return (
-			<div key={book._id} className="book-card">
+			<div key={book._id} className="book-card book-owned">
 				<h3 className="book-title">
 					<Link to="/" className="link-to-det">
 						{book.title}

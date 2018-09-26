@@ -19,6 +19,10 @@ h1 {
 	font-family: 'Noto Serif JP', serif;
 	color: $text-color, 8%;
 }
+.detail-title {
+	font-family: 'Noto Serif JP', serif !important;
+	font-size: 2rem;
+}
 .container {
 	padding: 25px calc((100vw - 960px) / 2);
 

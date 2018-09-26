@@ -17,6 +17,7 @@ class Auth extends Component {
 			email: '',
 			password: '',
 			language: '',
+			location: '',
 			picture: undefined,
 			error: ''
 		};
@@ -37,6 +38,7 @@ class Auth extends Component {
 							email={this.state.email}
 							password={this.state.password}
 							language={this.state.language}
+							location={this.state.location}
 							error={this.state.error}
 							sign={this._sign}
 						/>
@@ -84,7 +86,8 @@ class Auth extends Component {
 				{
 					email: this.state.email,
 					password: this.state.password,
-					language: this.state.language
+					language: this.state.language,
+					location: this.state.location
 				},
 				pictureDeclaration
 			)

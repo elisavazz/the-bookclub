@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import BookItem from './BookItem';
 import api from '../utils/api';
 import AllBooks from './AllBooks';
 

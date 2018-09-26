@@ -10,13 +10,11 @@ const { userMiddleware, checkLoggedIn } = require('../../utils/middleware');
 
 router.post('/add', checkLoggedIn, (req, res) => {
 	const { title, author, genre, language, estimatedReadingDays, availability, isbn, date } = req.body;
-	// console.log('CREATING NEW BOOK' + req.body);
-	// console.log(req);
+
 	if (!title || !author || !language || !estimatedReadingDays)
 		res.status(400).send({ error: 'Missing information' });
-	//UPLOAD PICTURE IS NOT WORKING PROPERLY
 
-	const toLowerCaseTitle = title.toLowerCase();
+	//const toLowerCaseTitle = title.toLowerCase();
 	const toLowercaseLanguage = language.toLowerCase();
 	Book.findOne({ title })
 		.then((existingBook) => {
@@ -44,14 +42,15 @@ router.post('/add', checkLoggedIn, (req, res) => {
 						'this user added the book' + book.owner + 'and this is the id' + book._id
 					);
 					//adds authomatically the book to users the bookshelf
-					User.findByIdAndUpdate(
+					return User.findByIdAndUpdate(
 						book.owner,
 						{ $push: { bookshelf: book._id } },
 						{ new: true }
-					).then((book) => {
-						//console.log(book);
-						res.send(book);
-					});
+					);
+				})
+				.then((user) => {
+					console.log(user);
+					res.send(user);
 				})
 				.catch((err) => {
 					console.log(err);

@@ -38,6 +38,7 @@ class SignUp extends React.Component {
 		this.props.handleInputChange('email', '');
 		this.props.handleInputChange('password', '');
 		this.props.handleInputChange('language', '');
+		this.props.handleInputChange('location', '');
 	}
 
 	render() {
@@ -76,44 +77,13 @@ class SignUp extends React.Component {
 				<br />
 				<label className="fill-info">where are you?</label>
 				<br />
-				<PlacesAutocomplete
-					value={this.state.address}
-					onChange={this.handleChange}
-					onSelect={this.handleSelect}
-				>
-					{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-						<div>
-							<input
-								{...getInputProps({
-									placeholder: 'Search Places ...',
-									className: 'location-search-input input'
-								})}
-							/>
-							<div className="autocomplete-dropdown-container">
-								{loading && <div>Loading...</div>}
-								{suggestions.map((suggestion) => {
-									const className = suggestion.active
-										? 'suggestion-item--active'
-										: 'suggestion-item';
-									// inline style for demonstration purpose
-									const style = suggestion.active
-										? { backgroundColor: '#fafafa', cursor: 'pointer' }
-										: { backgroundColor: '#ffffff', cursor: 'pointer' };
-									return (
-										<div
-											{...getSuggestionItemProps(suggestion, {
-												className,
-												style
-											})}
-										>
-											<span>{suggestion.description}</span>
-										</div>
-									);
-								})}
-							</div>
-						</div>
-					)}
-				</PlacesAutocomplete>
+				<input
+					type="location"
+					value={this.props.location}
+					onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
+					className="input"
+					placeholder="where are you?"
+				/>
 				<br />
 				<br />
 				<label className="fill-info">add a picture!</label>
