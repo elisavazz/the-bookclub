@@ -11,8 +11,8 @@ router.use(userMiddleware); //IS THE USER LOGGED IN?
 
 router.get('/:id', (req, res) => {
 	const { id } = req.params;
-	console.log(id);
 	User.findOne(id).then((user) => {
+		console.log('user', user);
 		res.send(user);
 	});
 });

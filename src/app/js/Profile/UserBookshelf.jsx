@@ -1,31 +1,32 @@
 import React from 'react';
 
 class UserBookshelf extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-
-	// 	this.state = {
-	// 		books: []
-	// 	};
-	// }
-	componentDidMount() {
-		console.log('USER ID ' + this.props.user._id);
-		// api.get(`/api/books/user-bookshelf`, {
-		// 	id: this.props.user._id
-		// });
-		// .then((languages) => {
-		// 	this.setState({ books: books });
-		// });
-	}
-	// componentDidMount() {
-	// 	api.get('/api/books/mine').then((books) => {
-	// 		this.setState({ books: books });
-	// 	});
+	//AvailabilityCheckmark() {
+	// 	if (book.availability === true) {
+	// 		return <input type="checkbox" onChange={console.log('hi')} value={book.availability} />;
+	// 	}
 	// }
 	render() {
+		const mappedBookshelf = this.props.user.bookshelf.map((book) => {
+			console.log(book.title + ', ' + book.availability);
+			return (
+				<form>
+					<h5>
+						{book.title}, by {book.author}
+					</h5>
+					<label>currently available </label>
+					<input
+						type="checkbox"
+						onChange={(evt) => console.log(book._id)}
+						value={book.availability}
+					/>
+				</form>
+			);
+		});
 		return (
 			<div className="user-bookshelf">
-				<h1>Your bookshelf!</h1>
+				<h2 className="detail-title">your personal bookshelf:</h2>
+				{mappedBookshelf}
 			</div>
 		);
 	}

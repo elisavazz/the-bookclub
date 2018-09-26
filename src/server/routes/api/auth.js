@@ -54,10 +54,11 @@ router.post('/sign-up', (req, res) => {
 
 router.post('/sign-in', (req, res) => {
 	const { email, password } = req.body;
-
+	console.log('req.body', { email, password });
 	if (!email || !password) res.status(400).send({ error: 'Missing Credentials.' });
 
-	User.findOne({ email }).then((existingUser) => {
+	User.findOne({ email: req.body.email }).populate('bookshelf').then((existingUser) => {
+		console.log('USER IN WT', existingUser);
 		if (!existingUser) return res.status(400).send({ error: 'User does not exist.' });
 
 		const passwordsMatch = bcrypt.compareSync(password, existingUser.password);

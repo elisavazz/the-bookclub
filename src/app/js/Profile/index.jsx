@@ -19,12 +19,13 @@ class Profile extends Component {
 			language: props.user.language,
 			location: props.user.location,
 			error: '',
-			books: []
+			books: props.user.bookshelf
 		};
 
 		this._toggleEdit = this._toggleEdit.bind(this);
 		this._handleInputChange = this._handleInputChange.bind(this);
 		this._updateEdit = this._updateEdit.bind(this);
+		this._updateAvailability = this._updateAvailability.bind(this);
 	}
 
 	// i want to edit my profile i toggle edit
@@ -61,7 +62,7 @@ class Profile extends Component {
 				/>
 			);
 	}
-
+	_updateAvailability() {}
 	_handleInputChange(key, newValue) {
 		this.setState({
 			[key]: newValue

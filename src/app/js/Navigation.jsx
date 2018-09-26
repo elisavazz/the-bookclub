@@ -29,8 +29,14 @@ class Navigation extends Component {
 			collapsed: !this.state.collapsed
 		});
 	}
-	//const Navigation = (props) => {
+	Naviga = (props) => {
+		const isLoggedIn = this.props.user;
+		if (isLoggedIn) {
+			console.log('LODGGGED IN IS ' + isLoggedIn);
+		}
+	};
 	render() {
+		this.Naviga();
 		return (
 			<div>
 				<Navbar color="faded" light expand="sm">

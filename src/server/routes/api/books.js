@@ -79,7 +79,6 @@ router.get('/all', (req, res) => {
 					console.log('regloc' + regexLoc);
 					console.log('OWNER LOCATION' + el.owner.location);
 					if (!el.title.match(regexTitle) && !el.author.match(regexTitle)) return false;
-					//WHY CANT I SEND THE BOOK IF I CAN FIND IT?
 					if (!el.language.match(regexLang)) return false;
 					if (!el.owner.location.match(regexLoc)) return false;
 					//if (el.language.match(regex)) console.log('SEARCH WITH REGEX' + el.title);
@@ -195,7 +194,7 @@ router.post('/add-to-bookshelf', (req, res) => {
 });
 
 router.get('/user-bookshelf', (req, res) => {
-	console.log('HELLO User ' + req.user._id);
+	console.log('HELLO User ');
 });
 
 // Book.find({ owner: req.user._id })

@@ -63,7 +63,7 @@ class Book extends Component {
 
 	_availabilityCheck(key) {
 		this.setState({
-			[key]: !this.state.availability
+			[key]: this.state.availability
 		});
 	}
 

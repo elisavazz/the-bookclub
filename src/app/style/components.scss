@@ -125,7 +125,7 @@
 .wrap-container {
 	display: -webkit-flex;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	box-sizing: border-box;
@@ -186,6 +186,10 @@
 	font-weight: 700;
 }
 .profile-wrapper {
+	display: flex;
+	flex-direction: column;
+
+	box-sizing: border-box;
 	padding: 1.5%;
 	width: 50%;
 	background-color: #fff;
@@ -199,6 +203,7 @@
 	width: 250px;
 	height: 250px;
 	object-fit: cover;
+	align-self: center;
 	background-color: $primary-color;
 	-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
 	filter: grayscale(50%) opacity(76%);

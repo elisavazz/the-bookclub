@@ -3,8 +3,6 @@ import Bookshelf from './Bookshelf';
 import { Link } from 'react-router-dom';
 
 const LandingPage = (props) => {
-	console.log(props.user);
-
 	return (
 		<div className="landing">
 			<section>

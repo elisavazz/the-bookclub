@@ -1,14 +1,18 @@
 import React from 'react';
 import Search from './Search';
 import { Link } from 'react-router-dom';
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
+// }
+// const MappedBooks = for (let i=books.length -1;i>0;i--){
 
+// 	const j =Math.floor(Math.random())*(i+1);
+// 	[]
 const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, languages }) => {
 	if (books.length <= 0) return <h1>we found no books. try another search?</h1>;
 	const MappedBooks = books.map((book) => {
 		if (!book) return <h2>we found no books. try another search?</h2>;
-		console.log(book);
-		console.log('BOK OWNER IS ' + book.owner._id);
-		console.log('BOK OWNER IS ' + userId);
+
 		if (userId !== book.owner._id)
 			return (
 				<div key={book._id} className="book-card">
