@@ -70,7 +70,7 @@ class SignUp extends React.Component {
 					value={this.props.language}
 					onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
 					className="input"
-					placeholder="English..."
+					placeholder="English, Spanish...(please separate with a comma)"
 				/>
 				<br />
 				<br />

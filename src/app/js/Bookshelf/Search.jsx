@@ -11,10 +11,27 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 				value={search.title}
 				onChange={(event) => handleSearch('title', event.target.value)}
 				className="input"
+				placeholder="search title"
+			/>
+			<input
+				value={search.location}
+				onChange={(event) => handleSearch('location', event.target.value)}
+				className="input"
+				placeholder="search city"
 			/>
 
-			<input type="submit" value="Search" className="form-btn" />
-			<select name="language" id="language" className="select-form">
+			<select
+				name="language"
+				value={search.language}
+				onChange={(event) => handleSearch('language', event.target.value)}
+				id="language"
+				className="select-form"
+			>
+				{' '}
+				<option value="" selected>
+					{' '}
+					search a language{' '}
+				</option>
 				<option value="spanish"> Spanish </option>
 				<option value="italian"> Italian </option>
 				<option value="english"> English </option>
@@ -23,6 +40,7 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 				<option value="russian"> Russian</option>
 				<option value="japanese"> japanese</option>
 			</select>
+			<input type="submit" value="Search" className="form-btn" />
 		</form>
 	);
 };

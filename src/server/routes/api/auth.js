@@ -81,15 +81,19 @@ router.post('/sign-in', (req, res) => {
 });
 
 router.post('/edit', (req, res) => {
-	console.log(req.body);
-	const { username, language } = req.body;
+	const { username, language, location } = req.body;
+	console.log(language);
 	let languageList = language.toLowerCase().replace(/ /g, '').split(',');
 
-	User.findByIdAndUpdate(req.user._id, {
-		username: username,
-		language: languageList,
-		location: location
-	}).then((user) => {
+	User.findByIdAndUpdate(
+		req.user._id,
+		{
+			username: username,
+			language: languageList,
+			location: location
+		},
+		{ new: true }
+	).then((user) => {
 		const token = jwt.sign(
 			{
 				_id: user._id,
@@ -97,8 +101,8 @@ router.post('/edit', (req, res) => {
 				username: user.username,
 				profilePicture: user.profilePicture,
 				language: user.language,
-				bookshelf: user.bookshelf,
-				zipcode: user.zipcode
+				location: user.location,
+				bookshelf: user.bookshelf
 			},
 			config.SECRET_JWT_PASSPHRASE
 		);

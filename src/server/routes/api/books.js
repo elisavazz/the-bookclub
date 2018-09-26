@@ -17,7 +17,7 @@ router.post('/add', checkLoggedIn, (req, res) => {
 	//UPLOAD PICTURE IS NOT WORKING PROPERLY
 
 	const toLowerCaseTitle = title.toLowerCase();
-
+	const toLowercaseLanguage = language.toLowerCase();
 	Book.findOne({ title })
 		.then((existingBook) => {
 			if (existingBook) return res.status(400).send({ error: 'book exists already.' });
@@ -31,7 +31,7 @@ router.post('/add', checkLoggedIn, (req, res) => {
 				title,
 				author,
 				genre,
-				language: toLowerCaseTitle,
+				language: toLowercaseLanguage,
 				//i need to add a reference to the owner so i can look for them when i need a book
 				bookCover: pictureUrl,
 				estimatedReadingDays,
@@ -58,25 +58,38 @@ router.post('/add', checkLoggedIn, (req, res) => {
 //should filter?
 
 router.get('/all', (req, res) => {
-	console.log(req.query);
-	const regex = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
+	let regexTitle = '';
+	let regexLoc = '';
+	let regexLang = '';
+	if (req.query.title !== '')
+		regexTitle = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
+	else if (req.query.location !== '')
+		regexLoc = req.query.location ? new RegExp(`.*${req.query.location}.*`, 'i') : /.*/;
+	else if (req.query.language !== '')
+		regexLang = req.query.language ? new RegExp(`.*${req.query.language}.*`, 'i') : /.*/;
 
 	Book.find().then((books) => {
 		res.send(
 			books
 				.filter((el) => {
-					if (!el.title.match(regex)) return false;
+					if (!el.title.match(regexTitle)) return false;
+					//WHY CANT I SEND THE BOOK IF I CAN FIND IT?
+					if (!el.language.match(regexLang)) return false;
+					//if (el.language.match(regex)) console.log('SEARCH WITH REGEX' + el.title);
 					//if (req.query.minHp && parseInt(req.query.minHp) > el.base.HP) return false;
 
 					return true;
 				})
+				///BOOKS POPULATE IS NOT A FUNCTION
+				//.populate('owner', 'email')
 				.map((el) => {
 					return {
+						owner: el.owner,
 						title: el.title,
 						author: el.author,
 						genre: el.genre,
 						language: el.language,
-						//picture:
+						bookCover: el.bookCover,
 						estimatedReadingDays: el.estimatedReadingDays,
 						availability: el.availability,
 						isbn: el.isbn,
@@ -107,11 +120,13 @@ router.get('/language/:value', (req, res) => {
 });
 
 router.get('/available', (req, res) => {
+	console.log('QUERY' + req.query);
 	const { value } = req.params;
 	console.log(value);
 	const regex = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
 	Book.find({ availability: true })
 		.populate('owner', 'email')
+		.populate('owner', 'location')
 		.then((books) => {
 			res.send(books);
 		})
@@ -175,6 +190,16 @@ router.post('/add-to-bookshelf', (req, res) => {
 	});
 });
 
-//does the borrow function go
+router.get('/user-bookshelf', (req, res) => {
+	console.log('HELLO User ' + req);
+});
 
+// Book.find({ owner: req.user._id })
+// 	.populate('owner', 'email')
+// 	.then((books) => {
+// 		res.send(books);
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
 module.exports = router;

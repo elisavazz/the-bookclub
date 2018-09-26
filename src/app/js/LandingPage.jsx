@@ -12,6 +12,7 @@ const LandingPage = (props) => {
 					<h1 className="titling">
 						Find books your native language,<br /> anywhere you are.
 					</h1>
+					<p>like a library, but you just need an email address</p>
 					<br />
 					<Link className="button" to="/auth/sign-up">
 						Join
@@ -21,8 +22,9 @@ const LandingPage = (props) => {
 				</div>
 			</section>
 			<section className="details">
-				<div className="container">
-					<p>1.Join 2.swap!</p>
+				<div className="container landing-container">
+					<h2>get in touch with your local community of readers</h2>
+					<p className="subtitle">Find what to want to read, contact, borrow</p>
 				</div>
 			</section>
 		</div>

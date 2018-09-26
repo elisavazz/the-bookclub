@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import EditProfile from './EditProfile';
 import UserProfile from './UserProfile';
+import UserBookshelf from './UserBookshelf';
 import NotFound from '../NotFound';
 import api from '../utils/api';
 
@@ -13,15 +14,20 @@ class Profile extends Component {
 
 		this.state = {
 			isEditing: false,
+			userId: props.user._id,
 			username: props.user.username,
 			language: props.user.language,
-			error: ''
+			location: props.user.location,
+			error: '',
+			books: []
 		};
 
 		this._toggleEdit = this._toggleEdit.bind(this);
 		this._handleInputChange = this._handleInputChange.bind(this);
+		this._updateEdit = this._updateEdit.bind(this);
 	}
-	// i want to edit my profile
+
+	// i want to edit my profile i toggle edit
 
 	_toggleEdit() {
 		this.setState({ isEditing: !this.state.isEditing });
@@ -30,7 +36,8 @@ class Profile extends Component {
 	///handleclick wants to toggle the edit feature of the page
 
 	render() {
-		console.log(this.state);
+		//console.log(this.props);
+		console.log(this.state.books);
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />;
 		if (this.state.isEditing) {
 			return (
@@ -38,6 +45,7 @@ class Profile extends Component {
 					handleInputChange={this._handleInputChange}
 					username={this.state.username}
 					language={this.state.language}
+					location={this.state.location}
 					error={this.state.error}
 					toggleEdit={this._toggleEdit}
 					updateEdit={this._updateEdit}
@@ -48,6 +56,7 @@ class Profile extends Component {
 				<UserProfile
 					user={this.props.user}
 					view={this.state.view}
+					books={this.state.books}
 					toggleEdit={this._toggleEdit}
 				/>
 			);
@@ -66,7 +75,8 @@ class Profile extends Component {
 		api
 			.post(`/api/auth/edit`, {
 				username: this.state.username,
-				language: this.state.language
+				language: this.state.language,
+				location: this.state.location
 			})
 			.then((data) => {
 				localStorage.setItem('identity', data.token);

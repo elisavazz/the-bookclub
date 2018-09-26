@@ -34,7 +34,7 @@ class Navigation extends Component {
 			<div>
 				<Navbar color="faded" light expand="sm">
 					<NavbarBrand href="/" className="navBarBrand">
-						the Bookclub
+						the Bookish
 					</NavbarBrand>
 
 					<NavbarToggler onClick={this.toggle} />

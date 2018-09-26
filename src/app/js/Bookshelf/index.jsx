@@ -14,7 +14,8 @@ class BookInfo extends Component {
 			languages: [],
 			search: {
 				title: '',
-				genre: ''
+				location: '',
+				language: ''
 			}
 		};
 		//this._updateSearch = this._updateSearch.bind(this);
@@ -41,7 +42,7 @@ class BookInfo extends Component {
 	//	<input type="text" onChange={(evt) => this._updateSearch(evt.target.value)} />
 	render() {
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />; // this is actually the protection
-
+		console.log(this.state);
 		return (
 			<div className="container  book-container">
 				<h1>Hello {this.props.user.username}, these are all the books !</h1>
@@ -74,9 +75,14 @@ class BookInfo extends Component {
 		event.preventDefault();
 		// api.get(`/api/books/available`).then((books) => {
 
-		api.get(`/api/books/all?title=${this.state.search.title}`).then((books) => {
-			this.setState({ books: books });
-		});
+		api
+			.get(
+				`/api/books/all?title=${this.state.search.title}&location=${this.state.search
+					.location}&language=${this.state.search.language}`
+			)
+			.then((books) => {
+				this.setState({ books: books });
+			});
 	}
 	// _updateSearch(value) {
 	// 	api.get(`/api/books/language/${value}`).then((books) => {
@@ -98,11 +104,6 @@ class BookInfo extends Component {
 		api.get(`/api/books/${userId}/contact`).then((user) => {
 			console.log(user);
 		});
-		// // api calls
-		// // Book.findById(id)...
-		// // res.send(owner id)
-		// // User.findById(id)...
-		// // mail :)
 	}
 }
 

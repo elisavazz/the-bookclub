@@ -21,6 +21,7 @@
 	}
 }
 .email-btn {
+	margin: 12px auto;
 	display: inline-block;
 	padding: 6px 8px;
 	border: 2px solid lighten($primary-color, 8%);
@@ -112,6 +113,14 @@
 		color: lighten($primary-color, 8%);
 	}
 }
+.wrap-container {
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-evenly;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
 .book-container {
 	display: -webkit-flex;
 	display: flex;
@@ -119,6 +128,9 @@
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	box-sizing: border-box;
+}
+.user-bookshelf {
+	width: 30%;
 }
 .books-wrap {
 	display: -webkit-flex;
@@ -130,6 +142,10 @@
 	padding: 1.5%;
 }
 .book-card {
+	display: flex;
+	flex-direction: column;
+	align-content: space-around;
+	justify-content: center;
 	margin: 12px;
 	padding: 1.5%;
 	width: 30%;
@@ -146,6 +162,7 @@
 	color: $primary-color;
 }
 .book-cover {
+	object-fit: cover;
 	position: relative;
 	height: 175px;
 }
@@ -162,6 +179,13 @@
 	border-radius: 50%;
 	width: 250px;
 	height: 250px;
+	object-fit: cover;
+	background-color: $primary-color;
+	-webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(50%) opacity(76%);
+}
+.user-details {
+	top: 16px;
 }
 .asterisk {
 	font-size: 2rem;

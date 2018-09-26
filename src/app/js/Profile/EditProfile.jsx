@@ -2,8 +2,11 @@ import React from 'react';
 
 class EditProfile extends React.Component {
 	componentDidMount() {
+		//toFix Language to string
+		let languageString = this.props.language.toString();
 		this.props.handleInputChange('username', this.props.username);
-		this.props.handleInputChange('language', this.props.language);
+		this.props.handleInputChange('language', languageString);
+		this.props.handleInputChange('location', this.props.location);
 	}
 	render() {
 		return (
@@ -27,6 +30,15 @@ class EditProfile extends React.Component {
 					onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
 					className="edit-input"
 					placeholder={this.props.language}
+				/>
+				<br />
+				<br />
+				<input
+					type="location"
+					value={this.props.location}
+					onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
+					className="edit-input"
+					placeholder={this.props.location}
 				/>
 				<br />
 				<br />
