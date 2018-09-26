@@ -22,9 +22,17 @@ const LandingPage = (props) => {
 				</div>
 			</section>
 			<section className="details">
-				<div className="container landing-container">
-					<h2>get in touch with your local community of readers</h2>
-					<p className="subtitle">Find what to want to read, contact, borrow</p>
+				<div className="container landing-container wrap-container">
+					<img
+						src="https://res.cloudinary.com/vazzz/image/upload/v1537941326/hand.png"
+						width="300"
+						height="190"
+					/>
+					<div className="content-right">
+						<h2>get in touch with your local community of readers</h2>
+						<br />
+						<p className="subtitle">Find what to want to read, contact, borrow</p>
+					</div>
 				</div>
 			</section>
 		</div>
