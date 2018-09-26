@@ -26,3 +26,6 @@ h1 {
 		padding: 25px 10px;
 	}
 }
+.underlined-text {
+	border-bottom: 2px lighten($primary-color, 16%) dashed;
+}

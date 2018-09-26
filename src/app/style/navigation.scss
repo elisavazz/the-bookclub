@@ -9,6 +9,7 @@
 .navBarBrand {
 	font-family: 'Noto Serif JP', serif;
 	color: $text-color !important;
+
 	&:hover {
 		color: lighten($text-color, 16%) !important;
 	}

@@ -11,7 +11,7 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 				value={search.title}
 				onChange={(event) => handleSearch('title', event.target.value)}
 				className="input"
-				placeholder="search title"
+				placeholder="search a title or an author"
 			/>
 			<input
 				value={search.location}
@@ -26,12 +26,10 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 				onChange={(event) => handleSearch('language', event.target.value)}
 				id="language"
 				className="select-form"
+				defaultValue=""
 			>
 				{' '}
-				<option value="" selected>
-					{' '}
-					search a language{' '}
-				</option>
+				<option value=""> search a language </option>
 				<option value="spanish"> Spanish </option>
 				<option value="italian"> Italian </option>
 				<option value="english"> English </option>

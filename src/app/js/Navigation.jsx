@@ -18,11 +18,12 @@ class Navigation extends Component {
 	constructor(props) {
 		super(props);
 
+		this.toggleNavbar = this.toggleNavbar.bind(this);
 		this.state = {
 			collapsed: true
 		};
-		this.toggleNavbar = this.toggleNavbar.bind(this);
 	}
+
 	toggleNavbar() {
 		this.setState({
 			collapsed: !this.state.collapsed
@@ -34,44 +35,42 @@ class Navigation extends Component {
 			<div>
 				<Navbar color="faded" light expand="sm">
 					<NavbarBrand href="/" className="navBarBrand">
-						the Bookish
+						the <span className="underlined-text">Bookish</span>
 					</NavbarBrand>
+					<NavbarToggler onClick={this.toggleNavbar} />
+					<Collapse isOpen={this.state.collapsed} navbar>
+						<Nav className="ml-auto" navbar>
+							<NavItem>
+								<NavLink tag={Link} to="/books">
+									bookshelf
+								</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink tag={Link} to="/add">
+									add a book
+								</NavLink>
+							</NavItem>
+							<UncontrolledDropdown nav inNavbar>
+								<DropdownToggle nav caret>
+									more
+								</DropdownToggle>
+								<DropdownMenu right>
+									<DropdownItem>
+										<NavLink tag={Link} to="/profile">
+											profile
+										</NavLink>
+									</DropdownItem>
 
-					<NavbarToggler onClick={this.toggle} />
-					{this.props.user && (
-						<Collapse isOpen={this.state.isOpen} navbar>
-							<Nav className="ml-auto" navbar>
-								<NavItem>
-									<NavLink tag={Link} to="/books">
-										bookshelf
-									</NavLink>
-								</NavItem>
-								<NavItem>
-									<NavLink tag={Link} to="/add">
-										add a book
-									</NavLink>
-								</NavItem>
-								<UncontrolledDropdown nav inNavbar>
-									<DropdownToggle nav caret>
-										more
-									</DropdownToggle>
-									<DropdownMenu right>
-										<DropdownItem>
-											<NavLink tag={Link} to="/profile">
-												profile
-											</NavLink>
-										</DropdownItem>
+									<DropdownItem>
+										<NavLink tag={Link} to="/auth/logout">
+											log out
+										</NavLink>
+									</DropdownItem>
+								</DropdownMenu>
+							</UncontrolledDropdown>
+						</Nav>
+					</Collapse>
 
-										<DropdownItem>
-											<NavLink tag={Link} to="/auth/logout">
-												log out
-											</NavLink>
-										</DropdownItem>
-									</DropdownMenu>
-								</UncontrolledDropdown>
-							</Nav>
-						</Collapse>
-					)}
 					{!this.props.user && (
 						<Collapse isOpen={this.state.isOpen} navbar>
 							<Nav className="ml-auto" navbar>

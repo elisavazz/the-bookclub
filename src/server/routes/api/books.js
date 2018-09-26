@@ -21,7 +21,6 @@ router.post('/add', checkLoggedIn, (req, res) => {
 	Book.findOne({ title })
 		.then((existingBook) => {
 			if (existingBook) return res.status(400).send({ error: 'book exists already.' });
-			console.log(req.files);
 			return req.files && req.files.bookCover ? upload(req.files.bookCover) : Promise.resolve();
 		})
 		.then((pictureUrl) => {
@@ -38,25 +37,30 @@ router.post('/add', checkLoggedIn, (req, res) => {
 				availability,
 				isbn,
 				date
-			}).save();
-		})
-		.then((book) => {
-			//adds authomatically the book to users the bookshelf
-			User.findByIdAndUpdate(
-				req.user._id,
-				{ $push: { bookshelf: book._id } },
-				{ new: true }
-			).then((book) => {
-				console.log(book);
-				res.send(book);
-			});
-		})
-		.catch((err) => {
-			console.log(err);
+			})
+				.save()
+				.then((book) => {
+					console.log(
+						'this user added the book' + book.owner + 'and this is the id' + book._id
+					);
+					//adds authomatically the book to users the bookshelf
+					User.findByIdAndUpdate(
+						book.owner,
+						{ $push: { bookshelf: book._id } },
+						{ new: true }
+					).then((book) => {
+						//console.log(book);
+						res.send(book);
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		});
 });
 //should filter?
-
+//MOVE TO THIS THIS ROUTE!!!!
+//find a way to add email
 router.get('/all', (req, res) => {
 	let regexTitle = '';
 	let regexLoc = '';
@@ -68,20 +72,21 @@ router.get('/all', (req, res) => {
 	else if (req.query.language !== '')
 		regexLang = req.query.language ? new RegExp(`.*${req.query.language}.*`, 'i') : /.*/;
 
-	Book.find().then((books) => {
+	Book.find().populate('owner', 'location email').then((books) => {
 		res.send(
 			books
 				.filter((el) => {
-					if (!el.title.match(regexTitle)) return false;
+					console.log('regloc' + regexLoc);
+					console.log('OWNER LOCATION' + el.owner.location);
+					if (!el.title.match(regexTitle) && !el.author.match(regexTitle)) return false;
 					//WHY CANT I SEND THE BOOK IF I CAN FIND IT?
 					if (!el.language.match(regexLang)) return false;
+					if (!el.owner.location.match(regexLoc)) return false;
 					//if (el.language.match(regex)) console.log('SEARCH WITH REGEX' + el.title);
 					//if (req.query.minHp && parseInt(req.query.minHp) > el.base.HP) return false;
 
 					return true;
 				})
-				///BOOKS POPULATE IS NOT A FUNCTION
-				//.populate('owner', 'email')
 				.map((el) => {
 					return {
 						owner: el.owner,
@@ -125,8 +130,7 @@ router.get('/available', (req, res) => {
 	console.log(value);
 	const regex = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
 	Book.find({ availability: true })
-		.populate('owner', 'email')
-		.populate('owner', 'location')
+		.populate('owner', 'location email')
 		.then((books) => {
 			res.send(books);
 		})

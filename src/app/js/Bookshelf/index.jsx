@@ -10,6 +10,7 @@ class BookInfo extends Component {
 		super(props);
 
 		this.state = {
+			user: this.props.user._id,
 			books: [],
 			languages: [],
 			search: {
@@ -45,9 +46,13 @@ class BookInfo extends Component {
 		console.log(this.state);
 		return (
 			<div className="container  book-container">
-				<h1>Hello {this.props.user.username}, these are all the books !</h1>
+				<h1>
+					Hello <span className="underlined-text">{this.props.user.username}</span>, what do
+					you want to read?
+				</h1>
 
 				<AllBooks
+					userId={this.state.user}
 					books={this.state.books}
 					search={this.state.search}
 					searchBooks={this._searchBooks}
