@@ -9,7 +9,7 @@ const upload = require('../../utils/upload');
 //var salt = bcrypt.genSaltSync(10);
 
 router.post('/sign-up', (req, res) => {
-	const { email, password, language, zipcode } = req.body;
+	const { email, password, language, location } = req.body;
 
 	if (!email || !password || !language) res.status(400).send({ error: 'Missing Credentials.' });
 
