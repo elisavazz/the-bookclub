@@ -16,16 +16,18 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 				<div className="user-details">
 					<br />
 					<h3 className="titling">{user.username}</h3>
-					<br />
+
 					<h5>contact</h5>
 					<p>{user.email}</p>
-					<br />
+
 					<h5>reading</h5>
 					<p>{langsList}</p>
-					<br />
+
+					<h5>currently here</h5>
+					<p>{user.location}</p>
 				</div>
 
-				<button onClick={() => toggleEdit()} className="link">
+				<button className="btn edit-btn" onClick={() => toggleEdit()} className="link">
 					Edit
 				</button>
 			</div>

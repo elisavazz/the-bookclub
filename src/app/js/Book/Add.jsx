@@ -15,7 +15,7 @@ class Add extends React.Component {
 		return (
 			<div className="container">
 				<form>
-					<h1 className="titling">add a book!</h1>
+					<h1 className="top-padding titling">add a book!</h1>
 					<p>
 						<span className="asterisk">*</span> please fill in these areas
 					</p>

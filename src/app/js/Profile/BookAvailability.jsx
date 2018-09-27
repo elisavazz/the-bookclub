@@ -11,7 +11,7 @@ const BookAvailability = ({ book, updateAvailability }) => {
 				</h5>
 				<label>Status: Lent</label>
 				<button
-					className="availability-btn lend-btn "
+					className="btn availability-btn lend-btn "
 					onClick={(evt) => updateAvailability(book._id, book.availability)}
 				>
 					Got it back
@@ -26,7 +26,7 @@ const BookAvailability = ({ book, updateAvailability }) => {
 				</h5>
 				<label>Status: Available </label>
 				<button
-					className="availability-btn lend-btn "
+					className="btn availability-btn lend-btn "
 					onClick={(evt) => updateAvailability(book._id, book.availability)}
 				>
 					Lend

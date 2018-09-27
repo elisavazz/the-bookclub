@@ -6,7 +6,10 @@ import BookItem from './BookItem';
 const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, languages }) => {
 	//FIX SHUFFLE!
 	function Shuffle() {
-		// var arrLenght = someArray.length - 1;
+		var arrLenght = someArray.length - 1;
+		for (var i = arrLenght; i > 0; i--) {
+			console.log(i);
+		}
 		// var toSwap; // The index we will swap  (i.e. the random number)
 		// var temp; // A temporary variable to hold reference to index variable i
 		// for (var i = arrLenght; i > 0; i--) {

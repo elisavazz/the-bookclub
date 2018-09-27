@@ -12,10 +12,10 @@ class EditProfile extends React.Component {
 		return (
 			<div className="container">
 				<div className="profile-wrapper">
-					<h1>edit your profile!</h1>
+					<h3 className="titling">edit your profile</h3>
 
 					<label className="fill-info">update your username: </label>
-					<br />
+
 					<input
 						type="username"
 						value={this.props.username}
@@ -24,9 +24,9 @@ class EditProfile extends React.Component {
 						placeholder={this.props.username}
 					/>
 					<br />
-					<br />
+
 					<label className="fill-info">update languages:</label>
-					<br />
+
 					<input
 						type="language"
 						value={this.props.language}
@@ -35,9 +35,9 @@ class EditProfile extends React.Component {
 						placeholder={this.props.language}
 					/>
 					<br />
-					<br />
+
 					<label className="fill-info">update your location:</label>
-					<br />
+
 					<input
 						type="location"
 						value={this.props.location}
@@ -46,16 +46,21 @@ class EditProfile extends React.Component {
 						placeholder={this.props.location}
 					/>
 					<br />
-					<br />
-					<button className="form-btn" onClick={() => this.props.updateEdit()}>
-						edit
-					</button>
+					<div>
+						<button
+							className="btn cancel-btn"
+							onClick={() => this.props.toggleEdit()}
+							className="link"
+						>
+							<i className="material-icons">clear</i>
+						</button>
+						<button className="btn edit-btn" onClick={() => this.props.updateEdit()}>
+							<i className="material-icons">check</i>
+						</button>
+					</div>
+
 					<br />
 					<p>{this.props.error}</p>
-
-					<button onClick={() => this.props.toggleEdit()} className="link">
-						return to profile
-					</button>
 				</div>
 			</div>
 		);
