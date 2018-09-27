@@ -61,13 +61,13 @@ class Application extends React.Component {
 		});
 	}
 
-	_setUser(init) {
+	_setUser(init, cb) {
 		const token = localStorage.getItem('identity');
 		if (token) {
 			const decoded = jwtDecode(token);
 			delete decoded.iat;
 			if (init) return decoded;
-			this.setState({ user: decoded });
+			this.setState({ user: decoded }, cb);
 		} else {
 			return null;
 		}

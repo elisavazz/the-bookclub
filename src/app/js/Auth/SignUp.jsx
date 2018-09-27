@@ -21,7 +21,8 @@ class SignUp extends React.Component {
 						onChange={(evt) => this.props.handleInputChange('email', evt.target.value)}
 						className="input"
 						placeholder="E-Mail"
-					/>
+					/>{' '}
+					<span className="asterisk">*</span>
 					<br />
 					<br />
 					<input
@@ -30,7 +31,8 @@ class SignUp extends React.Component {
 						onChange={(evt) => this.props.handleInputChange('password', evt.target.value)}
 						className="input"
 						placeholder="Password"
-					/>
+					/>{' '}
+					<span className="asterisk">*</span>
 					<br />
 					<br />
 					<label className="fill-info">which language do you read?</label>
@@ -41,7 +43,8 @@ class SignUp extends React.Component {
 						onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
 						className="input"
 						placeholder="English, Spanish...(please separate with a comma)"
-					/>
+					/>{' '}
+					<span className="asterisk">*</span>
 					<br />
 					<br />
 					<label className="fill-info">where are you?</label>
@@ -52,7 +55,8 @@ class SignUp extends React.Component {
 						onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
 						className="input"
 						placeholder="where are you?"
-					/>
+					/>{' '}
+					<span className="asterisk">*</span>
 					<br />
 					<br />
 					<label className="fill-info">add a picture!</label>
@@ -63,13 +67,15 @@ class SignUp extends React.Component {
 						onChange={(evt) => this.props.handleInputChange('picture', evt.target.files[0])}
 						placeholder="Profile Picture"
 					/>
-
 					<br />
 					<br />
 					<button className="form-btn" onClick={() => this.props.sign('up')}>
 						Sign Up
 					</button>
 					<br />
+					<label className="fill-info">
+						<span className="asterisk">*</span>mandatory fields
+					</label>
 					<br />
 					<p>{this.props.error}</p>
 					<div className="separator" />

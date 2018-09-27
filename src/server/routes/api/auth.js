@@ -48,7 +48,7 @@ router.post('/sign-up', (req, res) => {
 				},
 				config.SECRET_JWT_PASSPHRASE
 			);
-			res.send('holla'); //change to { token }
+			res.send({ token }); //change to { token }
 		});
 });
 

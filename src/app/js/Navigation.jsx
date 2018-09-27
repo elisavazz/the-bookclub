@@ -40,22 +40,21 @@ class Navigation extends Component {
 							<NavbarBrand href="/" className="navBarBrand">
 								the <span className="underlined-text">Bookish</span>
 							</NavbarBrand>
-							{!this.props.user && (
-								<Collapse isOpen={this.state.isOpen} navbar>
-									<Nav className="ml-auto" navbar>
-										<NavItem>
-											<NavLink tag={Link} to="/auth/sign-up">
-												Join
-											</NavLink>
-										</NavItem>
-										<NavItem>
-											<NavLink tag={Link} to="/auth/sign-in">
-												Sign in
-											</NavLink>
-										</NavItem>
-									</Nav>
-								</Collapse>
-							)}
+
+							<Collapse isOpen={this.state.isOpen} navbar>
+								<Nav className="ml-auto" navbar>
+									<NavItem>
+										<NavLink tag={Link} to="/auth/sign-up">
+											Join
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink tag={Link} to="/auth/sign-in">
+											Sign in
+										</NavLink>
+									</NavItem>
+								</Nav>
+							</Collapse>
 						</Navbar>
 					</div>
 				);
@@ -64,7 +63,7 @@ class Navigation extends Component {
 				<div>
 					<Navbar color="faded" light expand="sm">
 						<NavbarBrand href="/" className="navBarBrand">
-							the <span className="underlined-text">Bookish</span>
+							<span className="underlined-text">Bookish</span>
 						</NavbarBrand>
 						<NavbarToggler onClick={this.toggleNavbar} />
 						<Collapse isOpen={this.state.collapsed} navbar>
