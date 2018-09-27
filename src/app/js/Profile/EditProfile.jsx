@@ -14,53 +14,63 @@ class EditProfile extends React.Component {
 				<div className="profile-wrapper">
 					<h3 className="titling">edit your profile</h3>
 
-					<label className="fill-info">update your username: </label>
+					<form className="top-padding">
+						<label className="fill-info">update your username: </label>
 
-					<input
-						type="username"
-						value={this.props.username}
-						onChange={(evt) => this.props.handleInputChange('username', evt.target.value)}
-						className="edit-input"
-						placeholder={this.props.username}
-					/>
-					<br />
+						<input
+							type="username"
+							value={this.props.username}
+							onChange={(evt) =>
+								this.props.handleInputChange('username', evt.target.value)}
+							className="edit-input input "
+							placeholder={this.props.username}
+						/>
+						<br />
 
-					<label className="fill-info">update languages:</label>
+						<label className="fill-info">update languages:</label>
 
-					<input
-						type="language"
-						value={this.props.language}
-						onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
-						className="edit-input"
-						placeholder={this.props.language}
-					/>
-					<br />
+						<input
+							type="language"
+							value={this.props.language}
+							onChange={(evt) =>
+								this.props.handleInputChange('language', evt.target.value)}
+							className="edit-input input "
+							placeholder={this.props.language}
+						/>
+						<br />
 
-					<label className="fill-info">update your location:</label>
+						<label className="fill-info">update your location:</label>
 
-					<input
-						type="location"
-						value={this.props.location}
-						onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
-						className="edit-input"
-						placeholder={this.props.location}
-					/>
-					<br />
-					<div>
-						<button
-							className="btn cancel-btn"
-							onClick={() => this.props.toggleEdit()}
-							className="link"
-						>
-							<i className="material-icons">clear</i>
-						</button>
-						<button className="btn edit-btn" onClick={() => this.props.updateEdit()}>
-							<i className="material-icons">check</i>
-						</button>
-					</div>
+						<input
+							type="location"
+							value={this.props.location}
+							onChange={(evt) =>
+								this.props.handleInputChange('location', evt.target.value)}
+							className="edit-input input "
+							placeholder={this.props.location}
+						/>
+						<br />
 
-					<br />
-					<p>{this.props.error}</p>
+						<div className="top-padding">
+							<button
+								className="btn transparent-btn  "
+								onClick={() => this.props.toggleEdit()}
+								className="link"
+							>
+								<i className="material-icons">clear</i>
+							</button>
+
+							<button
+								className="btn transparent-btn check-btn"
+								onClick={() => this.props.updateEdit()}
+							>
+								<i className="material-icons">check</i>
+							</button>
+						</div>
+
+						<br />
+						<p>{this.props.error}</p>
+					</form>
 				</div>
 			</div>
 		);

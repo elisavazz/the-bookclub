@@ -34,3 +34,14 @@ h1 {
 	border-bottom: 2px lighten($primary-color, 16%) dashed;
 	text-decoration-skip-ink: auto;
 }
+.icon-center {
+	position: relative;
+	/* Adjust these values accordingly */
+	top: 6px;
+}
+.footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	padding: 12px calc((100vw - 960px) / 2);
+}

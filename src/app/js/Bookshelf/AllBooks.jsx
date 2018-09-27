@@ -19,9 +19,17 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 		}
 		return books;
 	}
+	let NotFound;
 
 	//maybe fix the message
-	if (books.length <= 0) return <h2>we found no books. try another search?</h2>;
+	if (books.length <= 0) {
+		NotFound = (
+			<div className="top-padding">
+				<h2 className="error-msg">we found no books. try another search?</h2>
+			</div>
+		);
+	}
+
 	const MappedBooks = shuffleUsingRandomSwapping(books).map((book) => {
 		return <BookItem userId={userId} book={book} />;
 	});
@@ -35,6 +43,7 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 					handleSearch={handleSearch}
 					languages={languages}
 				/>
+				{NotFound}
 				<div className="books-wrap book-container">{MappedBooks}</div>
 			</div>
 		</div>

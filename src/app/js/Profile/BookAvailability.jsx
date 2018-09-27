@@ -9,16 +9,18 @@ const BookAvailability = ({ book, updateAvailability }) => {
 				<h5>
 					{book.title}, by {book.author}
 				</h5>
-				<div className="status-container">
-					<div className=" status-icon lent-book " />
-					<label>Status: Lent</label>
+				<div className="status-container upper-container">
+					<div className="status-container">
+						<div className=" status-icon lent-book " />
+						<label>Status: Lent</label>
+					</div>
+					<button
+						className="btn availability-btn getback-btn "
+						onClick={(evt) => updateAvailability(book._id, book.availability)}
+					>
+						Got it back
+					</button>
 				</div>
-				<button
-					className="btn availability-btn lend-btn "
-					onClick={(evt) => updateAvailability(book._id, book.availability)}
-				>
-					Got it back
-				</button>
 			</div>
 		);
 	else
@@ -27,17 +29,19 @@ const BookAvailability = ({ book, updateAvailability }) => {
 				<h5>
 					{book.title}, by {book.author}
 				</h5>
-				<div className="status-container">
+				<div className="status-container upper-container">
 					{' '}
-					<div className="available-book status-icon" />
-					<label>Status: Available </label>
+					<div className="status-container">
+						<div className="available-book status-icon" />
+						<label>Status: Available </label>
+					</div>
+					<button
+						className="btn availability-btn lend-btn "
+						onClick={(evt) => updateAvailability(book._id, book.availability)}
+					>
+						Lend
+					</button>
 				</div>
-				<button
-					className="btn availability-btn lend-btn "
-					onClick={(evt) => updateAvailability(book._id, book.availability)}
-				>
-					Lend
-				</button>
 			</div>
 		);
 };

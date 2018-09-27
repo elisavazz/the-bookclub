@@ -11,7 +11,7 @@ const Search = ({ books, search, searchBooks, handleSearch, languages }) => {
 				value={search.title}
 				onChange={(event) => handleSearch('title', event.target.value)}
 				className="input"
-				placeholder="search a title or an author"
+				placeholder=" search a title or an author"
 			/>
 			<input
 				value={search.location}

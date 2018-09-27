@@ -13,21 +13,21 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 		<div className="container wrap-container">
 			<div className="profile-wrapper">
 				<img className="profile-picture" src={user.profilePicture} height="360" alt={user._id} />
-				<div className="user-details">
+				<div className="user-details ">
 					<br />
-					<h3 className="titling">{user.username}</h3>
+					<h3 className="titling fill-info">{user.username}</h3>
 
-					<h5>contact</h5>
+					<h5 className="fill-info">contact</h5>
 					<p>{user.email}</p>
 
-					<h5>reading</h5>
+					<h5 className="fill-info">reading and speaking</h5>
 					<p>{langsList}</p>
 
-					<h5>currently here</h5>
+					<h5 className="fill-info">currently here</h5>
 					<p>{user.location}</p>
 				</div>
 
-				<button className="btn edit-btn" onClick={() => toggleEdit()} className="link">
+				<button className="btn transparent-btn " onClick={() => toggleEdit()} className="link">
 					Edit
 				</button>
 			</div>
