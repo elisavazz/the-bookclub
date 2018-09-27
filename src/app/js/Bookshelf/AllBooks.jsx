@@ -26,8 +26,8 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 		return <BookItem userId={userId} book={book} />;
 	});
 	return (
-		<div className="book-container">
-			<div className="search-form top-padding">
+		<div>
+			<div className="search-form top-padding book-container">
 				<Search
 					books={books}
 					search={search}
@@ -35,7 +35,7 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 					handleSearch={handleSearch}
 					languages={languages}
 				/>
-				<div className="books-wrap">{MappedBooks}</div>
+				<div className="books-wrap book-container">{MappedBooks}</div>
 			</div>
 		</div>
 	);

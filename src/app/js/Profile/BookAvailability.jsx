@@ -5,11 +5,14 @@ const BookAvailability = ({ book, updateAvailability }) => {
 
 	if (book.availability === false)
 		return (
-			<div className="book-slot lent-book ">
+			<div className="book-slot ">
 				<h5>
 					{book.title}, by {book.author}
 				</h5>
-				<label>Status: Lent</label>
+				<div className="status-container">
+					<div className=" status-icon lent-book " />
+					<label>Status: Lent</label>
+				</div>
 				<button
 					className="btn availability-btn lend-btn "
 					onClick={(evt) => updateAvailability(book._id, book.availability)}
@@ -20,11 +23,15 @@ const BookAvailability = ({ book, updateAvailability }) => {
 		);
 	else
 		return (
-			<div className="book-slot available-book ">
+			<div className="book-slot ">
 				<h5>
 					{book.title}, by {book.author}
 				</h5>
-				<label>Status: Available </label>
+				<div className="status-container">
+					{' '}
+					<div className="available-book status-icon" />
+					<label>Status: Available </label>
+				</div>
 				<button
 					className="btn availability-btn lend-btn "
 					onClick={(evt) => updateAvailability(book._id, book.availability)}

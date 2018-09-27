@@ -29,23 +29,17 @@ class Comment extends Component {
 	}
 
 	_add() {
-		const coverDeclaration = { bookCover: this.state.cover };
-		console.log('_add ADDS A BOOK');
 		api
-			.post(
-				`/api/books/add`,
-				{
-					title: this.state.title,
-					author: this.state.author,
-					genre: this.state.genre,
-					language: this.state.language,
-					bookCover: coverDeclaration,
-					estimatedReadingDays: this.state.estimatedReadingDays,
-					availability: this.state.availability,
-					isbn: this.state.isbn
-				},
-				coverDeclaration
-			)
+			.post(`/api/books/add`, {
+				title: this.state.title,
+				author: this.state.author,
+				genre: this.state.genre,
+				language: this.state.language,
+				bookCover: coverDeclaration,
+				estimatedReadingDays: this.state.estimatedReadingDays,
+				availability: this.state.availability,
+				isbn: this.state.isbn
+			})
 			.then((data) => {
 				this.props.history.push('/');
 				console.log(data);

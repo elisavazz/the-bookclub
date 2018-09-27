@@ -93,6 +93,9 @@ class Profile extends Component {
 				});
 			});
 	}
+	clickFalse = (e) => {
+		console.log('book is true');
+	};
 
 	_updateAvailability(bookId, availability) {
 		console.log('updating ', bookId, 'from', availability);
@@ -106,6 +109,8 @@ class Profile extends Component {
 				.catch((err) => {
 					console.log(err);
 				});
+		} else {
+			this.clickFalse();
 		}
 		api
 			.post(`/api/books/${bookId}/lend`)

@@ -31,6 +31,7 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 					Edit
 				</button>
 			</div>
+			<div className="separator-vertical" />
 			<UserBookshelf user={user} books={books} updateAvailability={updateAvailability} />
 		</div>
 	);
