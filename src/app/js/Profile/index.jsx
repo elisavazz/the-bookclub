@@ -25,7 +25,7 @@ class Profile extends Component {
 		this._toggleEdit = this._toggleEdit.bind(this);
 		this._handleInputChange = this._handleInputChange.bind(this);
 		this._updateEdit = this._updateEdit.bind(this);
-		this._updateAvailability = this._updateAvailability.bind(this);
+
 		this._updateAvailability = this._updateAvailability.bind(this);
 	}
 
@@ -64,12 +64,13 @@ class Profile extends Component {
 				/>
 			);
 	}
-	_updateAvailability() {}
+
 	_handleInputChange(key, newValue) {
 		this.setState({
 			[key]: newValue
 		});
 	}
+
 	_updateEdit() {
 		// this.setState({
 		// 	error: ''
@@ -93,8 +94,19 @@ class Profile extends Component {
 			});
 	}
 
-	_updateAvailability(bookId) {
-		console.log('updating ', bookId);
+	_updateAvailability(bookId, availability) {
+		console.log('updating ', bookId, 'from', availability);
+		if (availability === false) {
+			api
+				.post(`/api/books/${bookId}/getBack`)
+				.then((book) => {
+					console.log('UPDATED AVAILABILITY ', book);
+					this.props.history.push('/profile');
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 		api
 			.post(`/api/books/${bookId}/lend`)
 			.then((book) => {

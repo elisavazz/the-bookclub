@@ -161,7 +161,10 @@
 	box-shadow: 0 2px 6px #d0c8c9;
 	margin: 12px;
 	padding: 1.5%;
-	width: 33%;
+	width: 30%;
+	& div {
+		margin-left: 16px;
+	}
 }
 .book-card {
 	@media (max-width: 700px) {
@@ -226,8 +229,21 @@
 	color: lighten($text-color, 20%);
 }
 .book-slot {
+	height: 108px;
 	padding: 1.5%;
 }
 .lent-book {
 	background-color: #d0c8c9;
+}
+.availability-btn {
+	margin: 12px;
+	padding: 6px 8px;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	border-radius: 3px;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(219, 97, 127, 0.6);
+	}
 }
