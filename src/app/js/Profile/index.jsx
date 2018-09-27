@@ -26,6 +26,7 @@ class Profile extends Component {
 		this._handleInputChange = this._handleInputChange.bind(this);
 		this._updateEdit = this._updateEdit.bind(this);
 		this._updateAvailability = this._updateAvailability.bind(this);
+		this._updateAvailability = this._updateAvailability.bind(this);
 	}
 
 	// i want to edit my profile i toggle edit
@@ -38,7 +39,7 @@ class Profile extends Component {
 
 	render() {
 		//console.log(this.props);
-		console.log(this.state.books);
+
 		if (!this.props.user) return <Redirect to="/auth/sign-in" />;
 		if (this.state.isEditing) {
 			return (
@@ -59,6 +60,7 @@ class Profile extends Component {
 					view={this.state.view}
 					books={this.state.books}
 					toggleEdit={this._toggleEdit}
+					updateAvailability={this._updateAvailability}
 				/>
 			);
 	}
@@ -88,6 +90,19 @@ class Profile extends Component {
 				this.setState({
 					error: err.description
 				});
+			});
+	}
+
+	_updateAvailability(bookId) {
+		console.log('updating ', bookId);
+		api
+			.post(`/api/books/${bookId}/lend`)
+			.then((book) => {
+				console.log('UPDATED AVAILABILITY ', book);
+				this.props.history.push('/profile');
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	}
 }

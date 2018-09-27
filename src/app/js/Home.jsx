@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 const Home = (props) => {
-	console.log(props.user);
 	if (!props.user) return <Redirect to="/landing" />;
 	return <Redirect to="/books" />;
 

@@ -43,7 +43,7 @@ class BookInfo extends Component {
 		console.log(this.state);
 		return (
 			<div className="container  book-container">
-				<h1>
+				<h1 className="top-padding">
 					Hello <span className="underlined-text">{this.props.user.username}</span>, what do
 					you want to read?
 				</h1>

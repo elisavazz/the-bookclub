@@ -32,7 +32,6 @@ class Application extends React.Component {
 	}
 
 	render() {
-		console.log('USER in front', this.state.user);
 		return (
 			<BrowserRouter>
 				<div>

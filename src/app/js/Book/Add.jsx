@@ -6,7 +6,7 @@ class Add extends React.Component {
 		this.props.handleInputChange('title', '');
 		this.props.handleInputChange('author', '');
 		this.props.handleInputChange('genre', '');
-		//BOOKCOVER HAS TO BE UPLOADED
+		//BOOKCOVER Gets UPLOADED thus is not here
 		this.props.handleInputChange('estimatedReadingDays', '');
 		this.props.availabilityCheck('availability', '');
 		this.props.handleInputChange('isbn', '');

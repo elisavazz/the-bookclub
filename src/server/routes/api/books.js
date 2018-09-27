@@ -72,7 +72,7 @@ router.get('/all', (req, res) => {
 	else if (req.query.language !== '')
 		regexLang = req.query.language ? new RegExp(`.*${req.query.language}.*`, 'i') : /.*/;
 
-	Book.find().populate('owner', 'location email').then((books) => {
+	Book.find({ availability: true }).populate('owner', 'location email').then((books) => {
 		res.send(
 			books
 				.filter((el) => {
@@ -166,9 +166,14 @@ router.get('/:id', (req, res) => {
 router.post('/:id/lend', (req, res) => {
 	const { id } = req.params;
 
-	Book.findByIdAndUpdate(id, { availability: false }, { new: true }).then((book) => {
-		res.send(book);
-	});
+	console.log('REQ Params' + id);
+	Book.findByIdAndUpdate(id, { availability: false }, { new: true })
+		.then((book) => {
+			res.send(book);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
 
 router.post('/:id/getBack', (req, res) => {
@@ -178,8 +183,8 @@ router.post('/:id/getBack', (req, res) => {
 		.then((book) => {
 			res.send(book);
 		})
-		.then((book) => {
-			res.send(book);
+		.catch((err) => {
+			console.log(err);
 		});
 });
 

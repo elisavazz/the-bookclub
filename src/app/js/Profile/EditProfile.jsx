@@ -10,52 +10,53 @@ class EditProfile extends React.Component {
 	}
 	render() {
 		return (
-			<div className="profile-wrapper">
-				<h1>edit your profile!</h1>
+			<div className="container">
+				<div className="profile-wrapper">
+					<h1>edit your profile!</h1>
 
-				<label className="fill-info">update your username: </label>
-				<br />
-				<input
-					type="username"
-					value={this.props.username}
-					onChange={(evt) => this.props.handleInputChange('username', evt.target.value)}
-					className="edit-input"
-					placeholder={this.props.username}
-				/>
-				<br />
-				<br />
-				<label className="fill-info">update languages:</label>
-				<br />
-				<input
-					type="language"
-					value={this.props.language}
-					onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
-					className="edit-input"
-					placeholder={this.props.language}
-				/>
-				<br />
-				<br />
-				<label className="fill-info">update your location:</label>
-				<br />
-				<input
-					type="location"
-					value={this.props.location}
-					onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
-					className="edit-input"
-					placeholder={this.props.location}
-				/>
-				<br />
-				<br />
-				<button className="form-btn" onClick={() => this.props.updateEdit()}>
-					edit
-				</button>
-				<br />
-				<br />
-				<p>{this.props.error}</p>
-				<br />
-				<button onClick={() => this.props.toggleEdit()} className="link">
-					return to profile
-				</button>
+					<label className="fill-info">update your username: </label>
+					<br />
+					<input
+						type="username"
+						value={this.props.username}
+						onChange={(evt) => this.props.handleInputChange('username', evt.target.value)}
+						className="edit-input"
+						placeholder={this.props.username}
+					/>
+					<br />
+					<br />
+					<label className="fill-info">update languages:</label>
+					<br />
+					<input
+						type="language"
+						value={this.props.language}
+						onChange={(evt) => this.props.handleInputChange('language', evt.target.value)}
+						className="edit-input"
+						placeholder={this.props.language}
+					/>
+					<br />
+					<br />
+					<label className="fill-info">update your location:</label>
+					<br />
+					<input
+						type="location"
+						value={this.props.location}
+						onChange={(evt) => this.props.handleInputChange('location', evt.target.value)}
+						className="edit-input"
+						placeholder={this.props.location}
+					/>
+					<br />
+					<br />
+					<button className="form-btn" onClick={() => this.props.updateEdit()}>
+						edit
+					</button>
+					<br />
+					<p>{this.props.error}</p>
+
+					<button onClick={() => this.props.toggleEdit()} className="link">
+						return to profile
+					</button>
+				</div>
 			</div>
 		);
 	}

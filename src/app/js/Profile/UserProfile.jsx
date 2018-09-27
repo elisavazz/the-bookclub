@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UserBookshelf from './UserBookshelf';
 
-const UserProfile = ({ user, view, books, toggleEdit }) => {
+const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 	let langsList = '';
 	for (let i = 0; i < user.language.length; i++) {
 		if (i === 0) langsList += user.language[i];
@@ -29,7 +29,7 @@ const UserProfile = ({ user, view, books, toggleEdit }) => {
 					Edit
 				</button>
 			</div>
-			<UserBookshelf user={user} books={books} />
+			<UserBookshelf user={user} books={books} updateAvailability={updateAvailability} />
 		</div>
 	);
 };
