@@ -72,7 +72,7 @@ router.get('/all', (req, res) => {
 	else if (req.query.language !== '')
 		regexLang = req.query.language ? new RegExp(`.*${req.query.language}.*`, 'i') : /.*/;
 
-	Book.find({ availability: true }).populate('owner', 'location email').then((books) => {
+	Book.find().populate('owner', 'location email').then((books) => {
 		res.send(
 			books
 				.filter((el) => {
@@ -128,7 +128,7 @@ router.get('/available', (req, res) => {
 	const { value } = req.params;
 	console.log(value);
 	const regex = req.query.title ? new RegExp(`.*${req.query.title}.*`, 'i') : /.*/;
-	Book.find({ availability: true })
+	Book.find()
 		.populate('owner', 'location email')
 		.then((books) => {
 			res.send(books);
@@ -167,7 +167,7 @@ router.post('/:id/lend', (req, res) => {
 	const { id } = req.params;
 
 	console.log('REQ Params' + id);
-	Book.findByIdAndUpdate(id, { availability: false }, { new: true })
+	Book.findByIdAndUpdate(id, { availability: true }, { new: true })
 		.then((book) => {
 			res.send(book);
 		})
