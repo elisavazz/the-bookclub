@@ -39,6 +39,10 @@ h1 {
 	/* Adjust these values accordingly */
 	top: 6px;
 }
+.content-right {
+	justify-self: flex-end;
+	text-align: right;
+}
 .footer {
 	position: relative;
 	bottom: 0;

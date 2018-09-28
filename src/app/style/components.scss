@@ -212,14 +212,14 @@
 .book-detail {
 	font-weight: 700;
 }
-.error-msg {
-	-webkit-animation-name: error; /* Safari 4.0 - 8.0 */
+.welcome-msg {
+	-webkit-animation-name: welcome; /* Safari 4.0 - 8.0 */
 	-webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
-	animation-name: error;
+	animation-name: welcome;
 	animation-duration: 2s;
 }
 
-@-webkit-keyframes error {
+@-webkit-keyframes welcome {
 	from {
 		opacity: 0;
 	}
@@ -227,7 +227,7 @@
 		opacity: 1;
 	}
 }
-@keyframes error {
+@keyframes welcome {
 	from {
 		opacity: 0;
 	}
@@ -239,32 +239,53 @@
 .profile-wrapper {
 	display: flex;
 	flex-direction: column;
-
-	box-sizing: border-box;
-	padding: 1.5%;
 	width: 36%;
+	box-sizing: border-box;
+	padding: 6% 1.5% 3%;
+	margin: 0 0 24px;
 	background-color: #fff;
 	box-sizing: border-box;
 	border-radius: 3px;
-	height: 96vh;
-	@media (max-width: 780px) {
-		width: 100%;
+
+	&-view {
+		height: 96vh;
+		@media (max-width: 780px) {
+			width: 100%;
+			height: 100vh;
+		}
+	}
+	&-edit {
+		height: 80vh;
+		@media (max-width: 1000px) {
+			width: 60%;
+			height: 100vh;
+		}
+		@media (max-width: 780px) {
+			width: 100%;
+			height: 100vh;
+		}
 	}
 }
 .separator-vertical {
-	background-color: $grey;
-	border: 1px solid $grey;
+	@media (min-width: 780px) {
+		background-color: $grey;
+		border: 1px solid $grey;
+	}
 }
 .user-bookshelf {
 	width: 60%;
+	@media (max-width: 780px) {
+		width: 100%;
+	}
 	& .bookshelf-wrap {
 		padding-left: 5px;
 	}
 }
 .profile-picture {
 	border-radius: 50%;
-	max-width: 240px;
-	max-height: 240px;
+	margin: auto auto;
+	max-width: 210px;
+	max-height: 210px;
 	object-fit: cover;
 	align-self: center;
 	background-color: $primary-color;
@@ -272,7 +293,7 @@
 	filter: grayscale(50%) opacity(76%);
 }
 .user-details {
-	top: 16px;
+	padding: 16px 16px 8px;
 }
 .asterisk {
 	font-size: 2rem;
@@ -283,6 +304,10 @@
 }
 .fill-info {
 	color: lighten($text-color, 20%);
+}
+.space-between {
+	display: flex;
+	justify-content: space-between;
 }
 .book-slot {
 	height: 108px;
@@ -320,6 +345,20 @@
 .transparent-btn {
 	background-color: transparent;
 	border: none;
+	&:hover {
+		cursor: pointer;
+	}
+	&-clear:hover {
+		background-color: #d0c8c9;
+	}
+	&-edit {
+		width: 108px;
+		margin: auto auto;
+		&:hover {
+			background-color: lighten($primary-color, 16%);
+			color: white;
+		}
+	}
 }
 .cancel-btn {
 	&:hover {

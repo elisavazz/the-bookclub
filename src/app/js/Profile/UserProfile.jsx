@@ -11,9 +11,10 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 
 	return (
 		<div className="container wrap-container">
-			<div className="profile-wrapper">
-				<img className="profile-picture" src={user.profilePicture} height="360" alt={user._id} />
-				<div className="user-details ">
+			<div className="profile-wrapper profile-wrapper-view">
+				<img className="profile-picture " src={user.profilePicture} alt={user._id} />
+
+				<div className="user-details">
 					<br />
 					<h3 className="titling fill-info">{user.username}</h3>
 
@@ -27,7 +28,10 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 					<p>{user.location}</p>
 				</div>
 
-				<button className="btn transparent-btn " onClick={() => toggleEdit()} className="link">
+				<button
+					className="btn transparent-btn transparent-btn-edit"
+					onClick={() => toggleEdit()}
+				>
 					Edit
 				</button>
 			</div>

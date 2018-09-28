@@ -11,12 +11,12 @@ class EditProfile extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<div className="profile-wrapper">
+				<div className="profile-wrapper profile-wrapper-edit">
 					<h3 className="titling">edit your profile</h3>
 
 					<form className="top-padding">
 						<label className="fill-info">update your username: </label>
-
+						<br />
 						<input
 							type="username"
 							value={this.props.username}
@@ -28,7 +28,7 @@ class EditProfile extends React.Component {
 						<br />
 
 						<label className="fill-info">update languages:</label>
-
+						<br />
 						<input
 							type="language"
 							value={this.props.language}
@@ -40,7 +40,7 @@ class EditProfile extends React.Component {
 						<br />
 
 						<label className="fill-info">update your location:</label>
-
+						<br />
 						<input
 							type="location"
 							value={this.props.location}
@@ -51,11 +51,10 @@ class EditProfile extends React.Component {
 						/>
 						<br />
 
-						<div className="top-padding">
+						<div className="top-padding space-between">
 							<button
-								className="btn transparent-btn  "
+								className="btn transparent-btn transparent-btn-clear "
 								onClick={() => this.props.toggleEdit()}
-								className="link"
 							>
 								<i className="material-icons">clear</i>
 							</button>

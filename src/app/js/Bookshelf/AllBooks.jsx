@@ -25,7 +25,7 @@ const AllBooks = ({ userId, books, search, searchBooks, handleSearch, contact, l
 	if (books.length <= 0) {
 		NotFound = (
 			<div className="top-padding">
-				<h2 className="error-msg">we found no books. try another search?</h2>
+				<h2 className="welcome-msg">we found no books. try another search?</h2>
 			</div>
 		);
 	}
