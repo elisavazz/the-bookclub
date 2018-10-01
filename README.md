@@ -9,3 +9,5 @@ USED: MongoDb, Mongoose, Node.js, React.js
 1. Clone or copy this repository
 2. `npm install`
 3. `npm run dev`
+
+or see it live here: [Bookish](https://the-bookish.herokuapp.com)
