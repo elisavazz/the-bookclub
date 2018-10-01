@@ -38,7 +38,7 @@ class Navigation extends Component {
 					<div>
 						<Navbar color="faded" light expand="sm">
 							<NavbarBrand href="/" className="navBarBrand">
-								the <span className="underlined-text">Bookish.</span>
+								<span className="underlined-text">Bookish.</span>
 							</NavbarBrand>
 
 							<Collapse isOpen={this.state.isOpen} navbar>
