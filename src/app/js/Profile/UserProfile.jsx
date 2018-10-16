@@ -18,7 +18,6 @@ const UserProfile = ({ user, view, books, toggleEdit, updateAvailability }) => {
 					<br />
 					<h3 className="titling fill-info">{user.username}</h3>
 
-					<h5 className="fill-info">contact</h5>
 					<p>{user.email}</p>
 
 					<h5 className="fill-info">reading and speaking</h5>
