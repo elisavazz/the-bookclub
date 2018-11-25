@@ -48,7 +48,7 @@ const LandingPage = (props) => {
 				<p>
 					<span className="navBarBrand underlined-text">
 						<b>Bookish</b>
-					</span>. coded with <i className="material-icons icon-center">favorite</i> by elisa
+					</span>. coded with <i className="material-icons icon-center">favorite</i> by <a href="https://github.com/elisavazz">vazz</a>
 				</p>
 			</footer>
 		</div>
