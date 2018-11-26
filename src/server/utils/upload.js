@@ -1,13 +1,15 @@
 const cloudinary = require('cloudinary');
-const config = require('../config');
+//const dotenv=require('dotenv').config({ path: '/../../../env/vars' });
+dotenv=require('dotenv').config({ path: '../../../env/vars' });
+//const config = require('../config');
 const fs = require('fs');
-
+console.log(dotenv);
 cloudinary.config({
-	cloud_name: config.CLOUDINARY_NAME,
-	api_key: config.CLOUDINARY_KEY,
-	api_secret: config.CLOUDINARY_SECRET
+	cloud_name: process.env.CLOUDINARY_NAME,
+	api_key: process.env.CLOUDINARY_KEY,
+	api_secret: process.env.CLOUDINARY_SECRET
 });
-
+//console.log(cloudinary.cloud_name);
 function upload(file) {
 	console.log('UPLOADING ' + file);
 	return new Promise((resolve, reject) => {
