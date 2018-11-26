@@ -1,4 +1,5 @@
 node_modules/
 dist/
 .cache/
+src/server/config.js
 src/server/public/app/
