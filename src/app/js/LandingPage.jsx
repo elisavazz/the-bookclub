@@ -30,8 +30,9 @@ const LandingPage = (props) => {
 						<div className="wow content-right">
 							<ScrollAnimation animateIn="fadeIn" className="welcome-msg">
 								<h2 className="titling">
-									A very good book is like a{' '}
-									<span className="underlined-text">good friend</span>
+									there are
+									<span className="underlined-text">{this.props.books.length} books</span>
+									available
 								</h2>
 								<br />
 								<p className="subtitle book-title">
