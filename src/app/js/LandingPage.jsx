@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 const LandingPage = (props) => {
+	console.log("props are "+ props.books.length);
 	return (
 		<div>
 			<div className="container landing">
@@ -30,9 +31,9 @@ const LandingPage = (props) => {
 						<div className="wow content-right">
 							<ScrollAnimation animateIn="fadeIn" className="welcome-msg">
 								<h2 className="titling">
-									there are
-									<span className="underlined-text">{this.props.books.length} books</span>
-									available
+									in this moment there are <br/>
+									<span className="underlined-text"> {props.books.length} books</span>
+									&#160; available.
 								</h2>
 								<br />
 								<p className="subtitle book-title">

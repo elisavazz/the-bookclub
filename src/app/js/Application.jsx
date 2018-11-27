@@ -48,7 +48,7 @@ class Application extends React.Component {
 						<Route path="/books" render={() => <Bookshelf user={this.state.user} />} />
 						<Route path="/chat" render={() => <Chat user={this.state.user} />} />
 						<Route path="/comment" render={() => <Comment user={this.state.user} />} />
-						<Route path="/landing" render={() => <LandingPage />} />
+						<Route path="/landing" render={() => <LandingPage books={this.state.books} />} />
 						<Route
 							path="/auth"
 							render={() => <Auth setUser={this._setUser} resetUser={this._resetUser} />}
