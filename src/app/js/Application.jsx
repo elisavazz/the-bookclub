@@ -20,15 +20,20 @@ class Application extends React.Component {
 		super(props);
 
 		this.state = {
-			user: this._setUser(true)
+			user: this._setUser(true),
+			books: []
 		};
 
 		this._setUser = this._setUser.bind(this);
 		this._resetUser = this._resetUser.bind(this);
 	}
 
+
 	componentDidMount() {
 		this._setUser();
+		api.get(`/api/books/available`).then((books) => {
+			this.setState({ books: books });
+		});
 	}
 
 	render() {
