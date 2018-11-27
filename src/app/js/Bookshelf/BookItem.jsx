@@ -41,7 +41,7 @@ const BookItem = ({ userId, book }) => {
 				</h3>
 				<h5 className="fill-info">{book.author}</h5>
 				<p>
-					Reading days: <span className="book-detail">{book.estimatedReadingDays}</span>{' '}
+					Loan time (days): <span className="book-detail">{book.estimatedReadingDays}</span>{' '}
 				</p>
 			</div>
 		</div>

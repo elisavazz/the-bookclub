@@ -8,14 +8,13 @@ const mongoose = require('mongoose')
 const chalk = require('chalk')
 const fs = require('fs')
 const fileUpload = require('express-fileupload')
-
 const config = require('./config')
 
 const apiRoutes = require('./routes/api')
 const appRoutes = require('./routes/app')
 
 mongoose.connect(
-    config.MONGODB_URI,
+config.MONGODB_URI,
     { useNewUrlParser: true }
 )
 

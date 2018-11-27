@@ -4,6 +4,7 @@ const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
+const dotenv=require('dotenv').config({ path: '../../env' });
 const upload = require('../../utils/upload');
 
 //var salt = bcrypt.genSaltSync(10);
@@ -46,7 +47,7 @@ router.post('/sign-up', (req, res) => {
 					bookshelf: user.bookshelf,
 					wishlist: user.wishlist
 				},
-				config.SECRET_JWT_PASSPHRASE
+config.SECRET_JWT_PASSPHRASE
 			);
 			res.send({ token }); //change to { token }
 		});
@@ -78,7 +79,11 @@ router.post('/sign-in', (req, res) => {
 			},
 			config.SECRET_JWT_PASSPHRASE
 		);
-		res.send({ token });
+		res.send({ token })
+		.catch((err) => {
+			console.log(err);
+		});;
+
 	});
 });
 
@@ -107,7 +112,7 @@ router.post('/edit', (req, res) => {
 				bookshelf: user.bookshelf,
 				wishlist: user.wishlist
 			},
-			config.SECRET_JWT_PASSPHRASE
+config.SECRET_JWT_PASSPHRASE
 		);
 		res.send({ token });
 	});
