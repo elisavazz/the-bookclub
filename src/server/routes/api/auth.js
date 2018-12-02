@@ -4,7 +4,7 @@ const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
-const dotenv=require('dotenv').config({ path: '../../env' });
+
 const upload = require('../../utils/upload');
 
 //var salt = bcrypt.genSaltSync(10);
@@ -26,7 +26,7 @@ router.post('/sign-up', (req, res) => {
 		})
 		.then((pictureUrl) => {
 			const hashedPassword = bcrypt.hashSync(password, 10);
-
+ console.log("hashed is "+hashedPassword);
 			return new User({
 				email,
 				password: hashedPassword,
@@ -49,7 +49,9 @@ router.post('/sign-up', (req, res) => {
 				},
 config.SECRET_JWT_PASSPHRASE
 			);
+			console.log("CURRENT TOKEN IS "+{token});
 			res.send({ token }); //change to { token }
+
 		});
 });
 

@@ -1,15 +1,14 @@
 const cloudinary = require('cloudinary');
-
-
 const config = require('../config');
 const fs = require('fs');
+
 
 cloudinary.config({
 	cloud_name: config.CLOUDINARY_NAME,
 	api_key: config.CLOUDINARY_KEY,
 	api_secret: config.CLOUDINARY_SECRET
 });
-//console.log(cloudinary.cloud_name);
+
 function upload(file) {
 	console.log('UPLOADING ' + file);
 	return new Promise((resolve, reject) => {
