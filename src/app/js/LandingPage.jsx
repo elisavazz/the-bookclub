@@ -9,6 +9,9 @@ const LandingPage = (props) => {
 	console.log("props are "+ props.books.length);
 	for (let i=0; i<props.books.length-1;i++){
 		console.log("cities are "+props.books[i].owner.location)
+		if(!cities.includes(props.books[i].owner.location)){
+			cities.push(props.books[i].owner.location);
+		}
 	}
 	//console.log("cities are "+props.books.owner.location)
 	return (
@@ -39,7 +42,7 @@ const LandingPage = (props) => {
 								<h2 className="titling">
 									in this moment there are <br/>
 									<span className="underlined-text"> {props.books.length} books</span>
-									&#160; available.
+									&#160; available in {cities.length} different cities.
 								</h2>
 								<br />
 								<p className="subtitle book-title">
