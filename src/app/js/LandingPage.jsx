@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 const LandingPage = (props) => {
+	let cities=[];
+
 	console.log("props are "+ props.books.length);
+	console.log("cities are "+props.books.owner.location)
 	return (
 		<div>
 			<div className="container landing">
