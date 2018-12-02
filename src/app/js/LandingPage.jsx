@@ -7,7 +7,7 @@ const LandingPage = (props) => {
 	let cities=[];
 
 	console.log("props are "+ props.books.length);
-	console.log("cities are "+props.books.owner.location)
+	//console.log("cities are "+props.books.owner.location)
 	return (
 		<div>
 			<div className="container landing">
